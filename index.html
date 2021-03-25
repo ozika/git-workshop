@@ -30,8 +30,17 @@
 			// - https://revealjs.com/initialization/
 			// - https://revealjs.com/config/
 			Reveal.initialize({
-				hash: true,
+				// Determines where controls appear, "edges" or "bottom-right"
+				controlsLayout: 'bottom-right',
 
+				// Visibility rule for backwards navigation arrows; "faded", "hidden"
+			  // or "visible"
+			  controlsBackArrows: 'faded',
+				// Display a presentation progress bar
+				progress: true,
+
+				hash: true,
+				slideNumber: true,
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
