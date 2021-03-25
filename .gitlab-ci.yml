@@ -5,7 +5,7 @@ pages:
   stage: deploy
   script:
     - mkdir public
-    - mv index.html public/html
+    - mv index.html public/index.html
     - mv revealjs public/revealjs
   artifacts:
     paths:
