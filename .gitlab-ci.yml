@@ -3,9 +3,12 @@ variables:
   GIT_SUBMODULE_STRATEGY: recursive
 pages:
   stage: deploy
+  script:
+    - mkdir public
+    - mv index.html public/html
+    - mv revealjs public/revealjs
   artifacts:
     paths:
-    - index.html
-    - revealjs
+    - public
   only:
   - master
