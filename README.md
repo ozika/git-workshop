@@ -2,6 +2,8 @@
 
 [![pipeline status](https://git.mpib-berlin.mpg.de/neurocode/git-workshop/badges/master/pipeline.svg)](https://git.mpib-berlin.mpg.de/neurocode/git-workshop/-/commits/master)
 
+Slides at: https://neurocode.mpib.berlin/git-workshop
+
 ## Description
 
 Source code for a Git workshop.
