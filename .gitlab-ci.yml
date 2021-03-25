@@ -1,0 +1,12 @@
+image: python:3
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+pages:
+  stage: deploy
+  script:
+  - mv . public
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
