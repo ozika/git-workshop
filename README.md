@@ -15,3 +15,7 @@ Source code for a Git workshop.
 ## Contributors
 
 tba
+
+## Resources
+
+- https://lennartwittkuhn.com/resources/git/
