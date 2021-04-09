@@ -4,6 +4,8 @@
 
 Slides at: https://neurocode.mpib.berlin/git-workshop
 
+Email notifications are disabled
+
 ## Description
 
 Source code for a Git workshop.
