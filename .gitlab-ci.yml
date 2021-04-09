@@ -1,15 +1,15 @@
-image: python:3
-variables:
-  GIT_SUBMODULE_STRATEGY: recursive
+stages:
+  - publish
+
 pages:
-  stage: deploy
+  stage: publish
+  image: registry.git.mpib-berlin.mpg.de/neurocode/git-workshop/xaringan:latest
   script:
-    - mkdir public
-    - mv index.html public/index.html
-    - mv revealjs public/revealjs
+    # note that 'git-advanced.Rmd' should be replaced with main file at some point: 
+    - Rscript -e "rmarkdown::render('git-advanced.Rmd', 'all', output_dir = 'public', output_file = 'index.html')"
   artifacts:
     paths:
-    - public
-    expire_in: 1 hour
+      - public
   only:
-  - master
+    # note that this should be replaced with master once all the different documents are merged:
+    - git-advanced
