@@ -73,8 +73,135 @@ git submodule add https://github.com/chaconinc/DbConnector
 ```
 
 
+---
 
+# Git submodules: Adding a submodule
 
+```bash
+$ git submodule add https://git.mpib-berlin.mpg.de/neurocode/neurocode_tools.git
+```
+
+The `neurocode_tools` Git repo will be cloned into the `neurocode_tools` subdirectory:
+
+```bash
+Cloning into '/Users/wittkuhn/neurocode/git-workshop-examples/neurocode_tools'...
+remote: Enumerating objects: 97, done.
+remote: Counting objects: 100% (97/97), done.
+remote: Compressing objects: 100% (62/62), done.
+remote: Total 97 (delta 27), reused 70 (delta 21), pack-reused 0
+Unpacking objects: 100% (97/97), done.
+```
+
+By default, submodules will add the subproject into a directory named the same as the repository, in this case “DbConnector”. You can add a different path at the end of the command if you want it to go elsewhere.
+
+```bash
+git submodule add https://git.mpib-berlin.mpg.de/neurocode/neurocode_tools.git \
+awesome_tools
+```
+
+---
+
+# Git Submodules: What happened?
+
+Let's run `git status` to see what happened to our repo:
+
+```bash
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   .gitmodules
+	new file:   neurocode_tools
+```
+
+There are two new files:
+
+1. `.gitmodules`
+1. `neurocode_tools`
+
+Let's check out what those files are!
+
+---
+
+## Git submodules: What is in `.gitmodules`?
+
+`.gitmodules` stores the mapping between the submodule's URL and the local subdirectory you've pulled it into.
+
+```bash
+$ cat .gitmodules
+[submodule "neurocode_tools"]
+	path = neurocode_tools
+	url = https://git.mpib-berlin.mpg.de/neurocode/neurocode_tools
+```
+
+- Multiple submodules will lead to multiple entries in `.gitmodules`
+- Committing `.gitmodules` to your repo is important, so that collaborators know where to get the submodule from
+- Make sure that the URL in `.gitmodules` is accessible by others
+- To overwrite the URL use `git config submodule.<submodule_name>.url <new_url>`
+
+---
+
+## Git submodules: What is in `neurocode_tools`?
+
+```{bash, eval=FALSE}
+$ git diff --cached neurocode_tools
+diff --git a/neurocode_tools b/neurocode_tools
+new file mode 160000
+index 0000000..383a616
+--- /dev/null
++++ b/neurocode_tools
+@@ -0,0 +1 @@
++Subproject commit 383a616af6d972313c6cf5e3ab743aecc5fed6cd
+```
+
+Cryptic!
+
+Although `neurocode_tools` is a subdirectory in your repo, Git doesn't track its contents (when you are not in that directory) but sees it as as submodule.
+
+Instead, Git references one particular commit of that repository: `Subproject commit 383a616af6d972313c6cf5e3ab743aecc5fed6cd`.
+
+---
+
+Let's add and commit the submodule (using combined add and commit with `-am`) ...
+
+```{bash, eval=FALSE}
+{{$ git commit -am "Add neurocode_tools module"}}
+[master df9a330] Add neurocode_tools module
+ 2 files changed, 4 insertions(+)
+ create mode 100644 .gitmodules
+ create mode 160000 neurocode_tools
+```
+
+... and push! 🚀
+
+```{bash, eval=FALSE}
+{{$ git push origin master}}
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 426 bytes | 426.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To git.mpib-berlin.mpg.de:neurocode/git-workshop-examples.git
+   1fbe5b6..df9a330  master -> master
+```
+
+---
+
+```{bash, eval=FALSE}
+{{$ ls}}
+README.md       neurocode_tools
+```
+
+Now we can `cd` into the `neurocode_tools` submodule and access its files:
+
+```{bash, eval=FALSE}
+{{$ cd neurocode_tools && ls}}
+README.md  docs       javascript matlab     r
+```
 
 ---
 
