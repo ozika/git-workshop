@@ -1,0 +1,89 @@
+---
+title: "Git Workshop"
+subtitle: "Advanced stuff"
+author: "Christoph Koch, Ondrej Zika, Lennart Wittkuhn"
+institute: "Max Planck Research Group NeuroCode"
+date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts] 
+    self_contained: true
+    yolo: false
+    lib_dir: libs
+    nature:
+      highlightStyle: solarized-dark
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r, echo=FALSE}
+library(xaringan)
+# xaringan::inf_mr()
+# http://jenrichmond.rbind.io/post/infinite-moon-reader/
+```
+
+```{css, echo=FALSE}
+@media print {
+  .has-continuation {
+    display: block !important;
+  }
+}
+```
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(knitr)
+opts_chunk$set(
+  fig.align="center", #fig.width=6, fig.height=4.5, 
+  # out.width="748px", #out.length="520.75px",
+  dpi = 300, #fig.path='Figs/',
+  cache = T#, echo=F, warning=F, message=F
+  )
+```
+
+# Table of contents
+
+1. [Submodules](#submodules)
+
+---
+
+# Submodules
+
+"I want to use code from function X" `git status`
+
+### How does it work
+
+- Submodules allow you to keep a Git repository as a subdirectory of another Git repository
+
+
+### Advantages
+
+- Avoiding redundancy
+- Allowing reusability
+- Independent commit history
+
+---
+
+### 
+
+1. Adding an existing Git repository as a submodule
+
+```bash
+git submodule add https://github.com/chaconinc/DbConnector
+```
+
+
+
+
+
+---
+
+# Submodules (continued)
+
+## Further reading
+
+- https://git-scm.com/book/en/v2/Git-Tools-Submodules
+
+
+
+
