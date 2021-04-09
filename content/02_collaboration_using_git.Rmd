@@ -1,0 +1,6 @@
+---
+title: "Collaboration using git"
+author: "Ondrej Zika"
+date: "4/9/2021"
+output: html_document
+---
