@@ -8,3 +8,6 @@
 # Exclude R junk
 .R*
 
+# Exclude rendered .html files
+/content/*.html
+

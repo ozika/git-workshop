@@ -1,0 +1,61 @@
+---
+title: "01_introduction_to_git"
+subtitle: "Introduction"
+author: "Lennart Wittkuhn, Christoph Koch, Ondrej Zika"
+institute: "Max Planck Research Group NeuroCode"
+date: "2016/12/12 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    self_contained: true
+    yolo: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: center, middle
+
+# Introduction to ```git```
+- A bullet point
+
+---
+
+## This is classic Linus Torvalds
+<img src="img/01_introduction_to_git_01.jpeg" alt="Linus Torvalds">
+
+---
+
+## This is recent Linus Torvalds
+<img src="img/01_introduction_to_git_02.jpeg" alt="Linus Torvalds">
+
+---
+
+## This is artwork of Linus Torvalds
+<img src="img/01_introduction_to_git_04.jpeg" alt="Linus Torvalds" style="width:200px">
+<img src="img/01_introduction_to_git_05.jpeg" alt="Linus Torvalds" style="width:200px">
+<img src="img/01_introduction_to_git_06.jpeg" alt="Linus Torvalds" style="width:200px">
+<img src="img/01_introduction_to_git_07.jpeg" alt="Linus Torvalds" style="width:200px">
+
+---
+
+## This is also Linus Torvalds (but let's not talk about it)
+<img src="img/01_introduction_to_git_03.jpeg" alt="Linus Torvalds" style="width:200px">
+
+---
+
+## The Story of ```git```
+**"I'm an egoistical bastard, and I name all my projects after myself. First 'Linux', now 'Git'"**
+- Developed after licensing blocked free usage of BitKeeper since company broke down (2005)
+- First version after a couple of days
+"git can mean anything, depending on your mood"
+
+---
+
+## ```git``` is a DVCS
+- "Distributed Version Control System"
+
+---
+
+### subsection
+#### slide title 
