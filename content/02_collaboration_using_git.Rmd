@@ -13,10 +13,9 @@ output:
         countIncrementalSlides: false
         #css: [default, metropolis, metropolis-fonts]
 ---
-
 ### Introduction
 #### What was covered before
-- working with git on your own <<sad lonely image>>
+- working with git on your own
 - branching, staging, commiting, pulling, pushing
 
 #### What will we learn in this section
@@ -26,19 +25,16 @@ output:
 4. how to time travel (get a version of one file from long ago)
 
 ---
-
-#### Motivation 
+### Motivation 
 - need to work on the same code at the same time
 - contributing to other projects, incl. packages on github
-<<funny image>>
 
---- 
-
-#### Project roles
+---
+### Project roles
 `maintainer` person responsible for merge requests (usually project leader)
 `developer` person contributing but not responsible for the repo, can't merge on remote (usually contributors)
-
-#### Daily routine
+--
+### Daily routine
 1. check (that you are in the right place)
 2. pull (get the most recent version of the code from the remote)
 3. branch (branch off, don't work on master/main)
@@ -46,21 +42,83 @@ output:
 5. push (push to remote)
 6. merge (create a merge request)
 
---- 
+---
 
-`morning`
-1. go to git repo and check if you are on the right branch (master/main)
-```
-cd /path/to/repo/
-git branch
-```
-1. pull from remote
-```
+#### 1. check
 
-```
-#### Not on the right branch
+go to the correct directory
 
 ```bash
-ahoj
+cd /path/to/repository/
 ```
 
+check if you are on `master` branch 
+
+```bash
+git branch
+```
+
+**output:**
+
+```bash
+  master
+* ondrej
+```
+if not on master:
+
+```bash
+git checkout master
+```
+then pull from the remote
+
+```bash
+git pull
+```
+
+---
+#### 1. check: troubleshooting
+
+**problem** can't merge becuse content on your current branch not commited:
+```bash
+error: Your local changes to the following files would be overwritten by checkout:
+	content/02_collaboration_using_git.Rmd
+	content/02_collaboration_using_git.html
+Please commit your changes or stash them before you switch branches.
+Aborting
+```
+**solution** stage and commit changes
+
+```bash
+git add new_file.txt //or add everything new using git add -A
+git commit -m "added new_file.txt"
+```
+
+**optional** check what the differences are exactly between your current location and `master`
+```bash
+git diff master
+```
+
+---
+#### 2. pull
+
+- most recent version of the code should be on the remote (on the master branch in most cases)
+- if so, simply pull 
+```bash
+git pull
+```
+
+#### 2. pull troubleshooting
+a. if there is a difference *but not merge conflict* between your local `master` and the remote `master`
+- git will automatically merge them, but it will ask you to give a name to the commit
+- this will open default terminal text editor (`emacs`, `vim`, `nano`)
+- on tardis, it's `vim`, you need to press `i` to insert the commit name, then `Esc` followed by a `:wq` [save (w) and exit (q)]
+
+b. if there *is a merge conflict* between your local `master` and the remote `master`
+
+
+
+---
+
+
+
+saa
