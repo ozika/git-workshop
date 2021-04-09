@@ -150,6 +150,7 @@ class: center, middle, inverse, title-slide
 `maintainer` person responsible for merge requests (usually project leader)
 `developer` person contributing but not responsible for the repo, can't merge on remote (usually contributors)
 --
+
 ### Daily routine
 1. check (that you are in the right place)
 2. pull (get the most recent version of the code from the remote)
@@ -159,10 +160,7 @@ class: center, middle, inverse, title-slide
 6. merge (create a merge request)
 
 ---
-
 #### 1. check
-
-go to the correct directory
 
 ```bash
 cd /path/to/repository/
@@ -214,8 +212,46 @@ git commit -m &quot;added new_file.txt&quot;
 git diff master
 ```
 
+---
+#### 2. pull
 
+- most recent version of the code should be on the remote (on the master branch in most cases)
+- if so, simply pull 
+```bash
+git pull
+```
+---
+#### 2. pull troubleshooting
+a. if there is a difference *but not merge conflict* between your local `master` and the remote `master`
+- git will automatically merge them, but it will ask you to give a name to the commit
+- this will open default terminal text editor (`emacs`, `vim`, `nano`)
+- on tardis, it's `vim`, you need to press `i` to insert the commit name, then `Esc` followed by a `:wq` [save (w) and exit (q)]
 
+---
+#### 2. pull troubleshooting
+b. if there *is a merge conflict* between your local `master` and the remote `master`
+```bash
+git pull 
+```
+```bash
+Auto-merging content/02_collaboration_using_git.Rmd
+CONFLICT (content): Merge conflict in content/02_collaboration_using_git.Rmd
+Automatic merge failed; fix conflicts and then commit the result.
+```
+open the file that contains conflicts (using any text editor) and find a weird-looking section:
+```bash
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+text from remote
+======= 
+my local new much better text
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 3989e0b850520f2ce7853bd73009449114f13436
+
+```
+in short the `&lt;&lt;&lt;` show the start of the conflict, the `&gt;&gt;&gt;` + `39...` (commit ID) show the end, and in the middle there is `====`
+one simply needs to choose which version they want to keep by deleting *all* unwanted text, in our case I want to just keep this:
+```bash
+my local new much better text
+```
 
 ---
 
