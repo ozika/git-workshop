@@ -1,6 +1,66 @@
 ---
-title: "Collaboration using git"
-author: "Ondrej Zika"
+title: "Collaboration workflow using git"
+author: "Ondřej Zíka"
 date: "4/9/2021"
-output: html_document
+output: 
+  xaringan::moon_reader:
+      self_contained: true
+      yolo: false
+      lib_dir: libs
+      nature:
+        highlightStyle: solarized-dark
+        highlightLines: true
+        countIncrementalSlides: false
+        #css: [default, metropolis, metropolis-fonts]
 ---
+
+### Introduction
+#### What was covered before
+- working with git on your own <<sad lonely image>>
+- branching, staging, commiting, pulling, pushing
+
+#### What will we learn in this section
+1. how to work on the same code at the same time as others
+2. what's the correct workflow
+3. how to spot and solve merge conflicts using gitlab and command line
+4. how to time travel (get a version of one file from long ago)
+
+---
+
+#### Motivation 
+- need to work on the same code at the same time
+- contributing to other projects, incl. packages on github
+<<funny image>>
+
+--- 
+
+#### Project roles
+`maintainer` person responsible for merge requests (usually project leader)
+`developer` person contributing but not responsible for the repo, can't merge on remote (usually contributors)
+
+#### Daily routine
+1. check (that you are in the right place)
+2. pull (get the most recent version of the code from the remote)
+3. branch (branch off, don't work on master/main)
+4. work (work, stage and commit as you go)
+5. push (push to remote)
+6. merge (create a merge request)
+
+--- 
+
+`morning`
+1. go to git repo and check if you are on the right branch (master/main)
+```
+cd /path/to/repo/
+git branch
+```
+1. pull from remote
+```
+
+```
+#### Not on the right branch
+
+```bash
+ahoj
+```
+
