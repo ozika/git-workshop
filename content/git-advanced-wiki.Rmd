@@ -345,23 +345,109 @@ Finish with
 
 🎉
 
+---
 
+# Install `mkdocs`
 
+```{bash, eval=FALSE}
+$ mkdocs serve
+-bash: mkdocs: command not found
+```
 
+#### Option 1: Manual installation using `pip` (Python)
 
+> "Yeah, I know, just do `pip install mkdocs`!"
 
+**Achtung!** 👮🚔🚨
 
+---
 
+# Create a virtual environment
 
+Step 1: Install the [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/):
 
+> The extensions include wrappers for creating and deleting virtual environments and otherwise managing your development workflow, making it easier to **work on more than one project at a time without introducing conflicts in their dependencies**.
 
+```{bash, eval=FALSE}
+$ mkvirtualenv --python $(which python3) wiki
+Already using interpreter /usr/bin/python3
+Using base prefix '/usr'
+New python executable in /mnt/beegfs/home/wittkuhn/.virtualenvs/wiki/bin/python3
+Also creating executable in /mnt/beegfs/home/wittkuhn/.virtualenvs/wiki/bin/python
+Installing setuptools, pkg_resources, pip, wheel...done.
+```
 
+Step 2: **Then,** `pip install` the packages inside the virtual environment:
 
+```{bash, eval=FALSE}
+(wiki) wittkuhn@master:~$ pip install mkdocs # installs mkdocs
+(wiki) wittkuhn@master:~$ pip install mkdocs-material # installs the wiki theme
+```
 
+---
 
+# Serve mkdocs documentation locally
 
+```{bash, eval=FALSE}
+$ mkdocs serve
+INFO    -  Building documentation... 
+INFO    -  Cleaning site directory
+INFO    -  Documentation built in 11.36 seconds 
+[I 210416 17:30:09 server:335] Serving on http://127.0.0.1:8000
+INFO    -  Serving on http://127.0.0.1:8000
+```
 
+Copy the URL `http://127.0.0.1:8000` into your browser.
 
+You should see the rendered wiki website! ✨
+
+The rendered website will update automatically as you make changes! 😲
+
+💡 *Tip:* Open two terminals: One to edit files and use git, one to serve the website
+
+---
+
+# How is the website updated?
+
+<iframe src="https://giphy.com/embed/12NUbkX6p4xOO4" width="480" height="440" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/shia-labeouf-12NUbkX6p4xOO4">via GIPHY</a></p>
+
+---
+
+# Enter: Continuous integration
+
+> Continuous Integration works by pushing small code chunks to your application’s codebase hosted in a Git repository, and to every push, run a pipeline of scripts to build, test, and validate the code changes before merging them into the main branch. 
+
+> GitLab CI/CD is configured by a file called `.gitlab-ci.yml` placed at the repository’s root.
+
+> This file creates a pipeline, which runs for changes to the code in the repository. Pipelines consist of one or more stages that run in order and can each contain one or more jobs that run in parallel. These jobs (or scripts) get executed by the GitLab Runner agent. 
+
+---
+
+# `.gitlab-ci.yml` file of our wiki
+
+`$ cat .gitlab-ci.yml `:
+
+```yaml
+image: python:3 # use a Docker container with Python 3
+before_script: # commands that should run before each job
+  # here, we install all the packages needed for mkdocs, using pip
+  - pip install mkdocs
+  - pip install mkdocs-material
+  - pip install pygments
+  - pip install pymdown-extensions
+  - pip install mkdocs-git-revision-date-plugin
+  - pip install mkdocs-git-revision-date-localized-plugin
+pages: # gitlab pages allows to publish static websites
+  stage: deploy # tells gitlab to deploy the website
+  script: # commands that are executed inside the container:
+  - mkdocs build # mkdocs command to build the website
+  - mv site public # move the contents of the website to public
+  artifacts:
+    paths:
+    - public # keep the contents of public available for download
+  only:
+  - master # only do this when new changes are pushed to the master branch
+```
 
 
 
