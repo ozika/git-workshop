@@ -14,7 +14,7 @@ output:
       highlightLines: true
       countIncrementalSlides: false
 ---
-class: center, middle
+class: middle
 
 
 ## Introduction to `git`
@@ -22,13 +22,8 @@ class: center, middle
 ---
 class: center, middle
 
-### Let's `git` going
-
----
-class: center, middle
-
 #### This is classic Linus Torvalds
-<img src="img/01_introduction_to_git_01.jpeg" alt="Linus Torvalds">
+<img src="img/01_introduction_to_git_01.jpeg" alt="Linus Torvalds" style="height:500px">
 
 ---
 class: center, middle
@@ -40,6 +35,7 @@ class: center, middle
 class: center, middle
 
 #### This is artwork of Linus Torvalds
+
 <img src="img/01_introduction_to_git_04.jpeg" alt="Linus Torvalds" style="width:200px">
 <img src="img/01_introduction_to_git_05.jpeg" alt="Linus Torvalds" style="width:200px">
 <img src="img/01_introduction_to_git_06.jpeg" alt="Linus Torvalds" style="width:200px">
@@ -49,30 +45,61 @@ class: center, middle
 class: center, middle
 
 #### This is also Linus Torvalds (but let's not talk about it)
-<img src="img/01_introduction_to_git_03.jpeg" alt="Linus Torvalds">
+<img src="img/01_introduction_to_git_03.jpeg" alt="Linus Torvalds" style="width:600px">
 
 ---
 
+.center[
 #### The Story of `git`
-**"I'm an egoistical bastard, and I name all my projects after myself. First 'Linux', now 'Git'"**
-- Developed after licensing blocked free usage of BitKeeper since company broke down (2005)
+]
+
+.pull-left[
+.center[
+>**I'm an egoistical bastard, and I name all my projects after myself. First "Linux", now "`git`"**
+
+vs.
+
+> **`git` can mean anything, depending on your mood**
+]
+]
+
+--
+
+.pull-right[
+- **Back in the day:** Software developers used **BitKeeper** to collaborate on code with colleagues
+
+- Free access to BitKeeper was revoked after a company broke down in 2005
+
+- A new solution was needed so **Linus Torvalds** coded it up
+
 - First version after a couple of days
-"git can mean anything, depending on your mood"
+]
+
 
 ---
 
 #### `git` is a DVCS
 
 ```bash
-nrcd-osx-003855:git-workshop koch$ tig
+tig
 ```
 
-<img src="img/01_introduction_to_git_08.jpeg" alt="Linus Torvalds">
+```bash
+2021-04-15 17:57 +0200 Koch           o [master] {origin/master} {origin/HEAD} p
+2021-04-12 18:01 +0200 Koch           o work in progress/testset_buffer
+2021-04-12 12:07 +0200 Koch           o [rework/no_buffer_testing_set] {origin/r
+2021-04-08 17:27 +0200 Koch           o Updated RawClassification function
+2021-04-08 14:56 +0200 Koch           o Before rework: no buffer in testing set
+2021-03-16 13:22 +0100 Koch           o Add exclude function
+2021-02-24 18:08 +0100 Koch           o Finished excluding pipeline
+2021-02-17 17:59 +0100 Koch           o Add correction of pulse flucs
+```
 
-- "Distributed **Version Control** System"
-- Taking "snapshots" of your project at any time point
-     - Go back to any snapshot and its current state of the project
+.center[Distributed Version Control System]
 
+--
+
+- Program that keeps track of a folder structure
 - A folder structure that `git` keeps track of is called a **"repository"**
 
 ---
@@ -80,32 +107,85 @@ nrcd-osx-003855:git-workshop koch$ tig
 #### `git` is a DVCS
 
 ```bash
-nrcd-osx-003855:git-workshop koch$ tig
+tig
 ```
 
-<img src="img/01_introduction_to_git_08.jpeg" alt="Linus Torvalds">
+```bash
+2021-04-15 17:57 +0200 Koch           o [master] {origin/master} {origin/HEAD} p
+2021-04-12 18:01 +0200 Koch           o work in progress/testset_buffer
+2021-04-12 12:07 +0200 Koch           o [rework/no_buffer_testing_set] {origin/r
+2021-04-08 17:27 +0200 Koch           o Updated RawClassification function
+2021-04-08 14:56 +0200 Koch           o Before rework: no buffer in testing set
+2021-03-16 13:22 +0100 Koch           o Add exclude function
+2021-02-24 18:08 +0100 Koch           o Finished excluding pipeline
+2021-02-17 17:59 +0100 Koch           o Add correction of pulse flucs
+```
 
-- Can work as a "time machine"
+.center[Distributed **Version Control** System]
+- Taking **snapshots** of your repository at any point in time
+- Go back to any snapshot and its current state of the project
+- All changes to files (and authors) are stored in a history
+
+---
+
+#### `git` is a DVCS
+
+```bash
+tig
+```
+
+```bash
+2021-04-15 17:57 +0200 Koch           o [master] {origin/master} {origin/HEAD} p
+2021-04-12 18:01 +0200 Koch           o work in progress/testset_buffer
+2021-04-12 12:07 +0200 Koch           o [rework/no_buffer_testing_set] {origin/r
+2021-04-08 17:27 +0200 Koch           o Updated RawClassification function
+2021-04-08 14:56 +0200 Koch           o Before rework: no buffer in testing set
+2021-03-16 13:22 +0100 Koch           o Add exclude function
+2021-02-24 18:08 +0100 Koch           o Finished excluding pipeline
+2021-02-17 17:59 +0100 Koch           o Add correction of pulse flucs
+```
+
+- Can work as a **time machine**
   - Restore projects at specific snapshots
   - Compare different snapshots
   
-"Oh no, my decoding results completely changed compared to last time I checked! What did I change since then?"
+> *Oh no, my decoding results completely changed compared to last time I checked!*
+> 
+> *What did I change since then?*
 
 ---
 
 #### The power of the `remote`
 
-- "**Distributed** Version Control System"
+.center[**Distributed** Version Control System]
 
-<!-- "Cloud-local" picture -->
+.pull-left[
+<img src="img/01_introduction_to_git_09.png" alt="cloud">
 
-- Instead of on your `local` machine these repositories can also be set up on a `remote` location!
-     - GitLab, GitHub, BitBucket
-     
-- The pros:
-     - Backup save form all harm (doesn't matter what happens to your machine)
-     - **Collaboration**
-     - Sharing
+.center[<img src="img/01_introduction_to_git_10.png" alt="GitLab logo" style="width:100px">
+<img src="img/01_introduction_to_git_11.png" alt="GitHub logo" style="width:100px">
+]
+]
+
+.pull-right[
+.center[
+Instead of on your `local` machine these repositories can also be set up on a **`remote`** location!
+]
+- GitLab, GitHub, BitBucket, ...
+- This is accessible to everybody you invite
+
+***
+
+.center[**The Pros:**]
+- Backup save form all harm
+- **Collaboration**
+     - Others can read/copy/edit your code
+     - Suggest changes
+     - Fix problems
+- Sharing
+     - Make code for your analysis available for everyone
+     - Yay! Open Science!
+]
 
 ---
 
@@ -119,25 +199,534 @@ git add
 git commit
 git push
 git pull
-git merge
 git checkout
+git merge
+git clone
 ```
+
+--
 
 - ...introduce a **workflow guideline** to avoid problems
      - Using branches and merging
+
+--
 
 - ...learn about **collaborative work** using GitLab
     - in lab use-case example
     - Dealing with merge conflicts
     - Git issues
 
-- ...cover project management using GitLab
+--
 
-- ...end with some advanced usage of `git`
+- ...cover **project management** using GitLab
+
+--
+
+- ...end with some **advanced usage** of `git`
+
+---
+class: center, middle
+
+### Let's `git` going
+
+---
+class: middle
+
+## `git`: The basics 
 
 ---
 
-### 
+### Interacting with `git`
+
+`git` can be interacted with in different ways:
+
+.left-column[
+1. Command line
+
+2. GUI
+]
 
 ---
+
+### Interacting with `git`
+
+`git` can be interacted with in different ways:
+
+.left-column[
+1. **Command line**
+
+2. GUI
+]
+
+.right-column[
+
+- Open your terminal
+
+```bash
+git
+```
+
+```bash
+usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+```
+
+- Most basic way to work with `git`
+     - No additional program required
+- Best way to teach `git`
+     - the same for everyone
+     - knowing what's actually going on
+
+]
+
+---
+
+### Interacting with `git`
+
+`git` can be interacted with in different ways:
+
+.left-column[
+1. Command line
+
+2. **GUI**
+]
+
+.right-column[
+.center[
+<img src="img/01_introduction_to_git_12.png" alt="cloud" style="width:400px">
+]
+
+- Applications providing a visual interface
+- Some in the **Managed Software Center**
+
+]
+
+---
+
+### Creating a `git` repository
+
+> Program that keeps track of a folder structure
+
+***
+
+**Let's tell git to do exactly that!**
+
+- Create new `git_workshop` folder in our home directory
+- Tell `git` to keep track of it 
+
+```bash
+cd ~
+mkdir git_workshop
+cd git_workshop
+*git init
+```
+
+```bash
+Initialized empty Git repository in /Users/koch/git_workshop/.git/
+```
+
+.center[
+<img src="img/01_introduction_to_git_13.png" alt="cloud" style="width:800px">
+]
+
+---
+
+### `git` keeping track
+
+**Let's create a file and see if `git` really notices**
+
+```bash
+touch README.md
+```
+
+We can regularly check what `git` thinks by using the `status` command
+
+```bash
+git status
+```
+
+```bash
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+*	README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+It lists our newly created file `README.md` as an **untracked file**!
+
+---
+
+### `git` keeping track
+
+- `git` **does not blindly just keep track** of everything in the folder
+- Helpful because it prevents us from tracking files that are...
+     - ...too large
+     - ...not interesting
+
+***
+
+--
+
+**How do I tell `git` to keep track of a file?**
+- Use the `add` command to add the file to be tracked
+- Check if `git` now keeps track with the `status` command
+
+```bash
+git add README.md
+git status
+```
+
+```bash
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+*	new file:   README.md
+```
+
+---
+
+### Staging and commiting
+
+.left-column[
+.center[
+.pull-left[
+Untracked
+
+|
+
+Staged
+
+|
+
+Committed
+]
+]
+]
+
+.right-column[
+
+]
+
+---
+
+### Staging and commiting
+
+.left-column[
+.center[
+.pull-left[
+**Untracked**
+
+|
+
+Staged
+
+|
+
+Committed
+]
+]
+]
+
+.right-column[
+Files that were changed but have not yet been added
+
+*Image of scattered notes/pages*
+]
+
+---
+
+### Staging and commiting
+
+.left-column[
+.center[
+.pull-left[
+Untracked
+
+**|**
+
+Staged
+
+|
+
+Committed
+]
+]
+]
+
+.right-column[
+**From untracked to staged:**
+
+```bash
+git add <YOUR FILE>
+```
+
+```bash
+git add -A
+```
+
+```bash
+git add .
+```
+]
+
+---
+
+### Staging and commiting
+
+.left-column[
+.center[
+.pull-left[
+Untracked
+
+|
+
+**Staged**
+
+|
+
+Committed
+]
+]
+]
+
+.right-column[
+
+"Preperation layer"
+
+Files that will be tracked as soon as we "commit" to it
+
+*Image of notes/pages being put in folder*
+
+]
+
+---
+
+### Staging and commiting
+
+.left-column[
+.center[
+.pull-left[
+Untracked
+
+|
+
+Staged
+
+**|**
+
+Committed
+]
+]
+]
+
+.right-column[
+
+**From staged to committed:**
+
+```bash
+git commit
+```
+
+```bash
+git commit -m 'My commit message'
+```
+
+- This will commit to all prepared changes/things to keep track of
+- It also adds a tiny message (written by you) what was done
+
+]
+
+---
+
+### Staging and commiting
+
+.left-column[
+.center[
+.pull-left[
+Untracked
+
+|
+
+Staged
+
+|
+
+**Committed**
+]
+]
+]
+
+.right-column[
+
+
+```bash
+git commit -m 'Added README.md'
+```
+
+```bash
+[master (root-commit) 214c62b] Added README.md
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 README.md
+```
+
+***
+
+**Congrats!**
+
+You created your first commit!
+
+Everything that was done is now archived and you will always be able to go back in time!
+
+]
+
+---
+
+### Let's do it again!
+
+**Add some lines to the `README.md`**
+
+```bash
+echo 'My first git project!' >> README.md
+```
+
+**Check what changed in comparison to our most recent commit**
+
+```bash
+git diff README.md
+```
+
+```bash
+diff --git a/README.md b/README.md
+index e69de29..eb43af5 100644
+--- a/README.md
++++ b/README.md
+@@ -0,0 +1 @@
+*+My first git project!
+```
+
+---
+
+**Are the changes we made about to be commited?**
+
+```bash
+git status
+```
+
+```bash
+On branch master
+*Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   README.md
+```
+
+**No! Let's stage our changes...**
+
+```bash
+git add -A
+git status
+```
+
+```bash
+On branch master
+*Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   README.md
+```
+
+---
+
+**...commit them...**
+
+```bash
+git commit -m 'Changes to README'
+```
+
+```bash
+[master ffaf3f8] Changes to README
+ 1 file changed, 1 insertion(+)
+```
+
+**...and look at our history**
+
+```bash
+git log
+```
+
+```bash
+commit ffaf3f8914bea3a08f3ee5dad2c939c9556b20cd (HEAD -> master)
+Author: Christoph Koch <koch@mpib-berlin.mpg.de>
+Date:   Fri Apr 16 19:19:25 2021 +0200
+
+    Changes to README
+
+commit 214c62bb7252d0bb7c995a590667e4b429ed3d40
+Author: Christoph Koch <koch@mpib-berlin.mpg.de>
+Date:   Fri Apr 16 18:56:47 2021 +0200
+
+    Added README.md
+```
+
+---
+
+**...commit them...**
+
+```bash
+git commit -m 'Changes to README'
+```
+
+```bash
+[master ffaf3f8] Changes to README
+ 1 file changed, 1 insertion(+)
+```
+
+**...and look at our history**
+
+```bash
+tig
+```
+
+```bash
+2021-04-16 19:19 +0200 Christoph Koch o [master] Changes to README
+2021-04-16 18:56 +0200 Christoph Koch I Added README.md
+```
+
+---
+
+***
+
+.center[
+**This covers the most basic commands to keep track of the files of a project!**
+]
+
+***
+
+However, there are still some things to understand to use `git` how it is intended to be used:
+
+- **Avoid files from being tracked** that you don't care about
+     - The `.gitignore` file
+     
+- Keep your main project safe while still **trying out new things** (that might produce errors)
+```bash
+git branch
+git checkout
+```
+
+- Interact with the **`remote`** (e.g. GitLab)
+```bash
+git push
+git pull
+```
+
 
