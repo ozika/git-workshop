@@ -18,6 +18,7 @@ tba
 
 ## Resources
 
+- [Shared notes on workshop content](https://pad.gwdg.de/_atM8DmgRmG-pemFSIukbQ)
 - https://git.mpib-berlin.mpg.de/wittkuhn/git-tutorial/-/issues/1
 - https://git.mpib-berlin.mpg.de/research-data-management/git-workshop/-/blob/master/description_content.md
 - https://lennartwittkuhn.com/resources/git/
