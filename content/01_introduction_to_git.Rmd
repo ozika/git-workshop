@@ -14,24 +14,30 @@ output:
       highlightLines: true
       countIncrementalSlides: false
 ---
+class: center, middle
 
-## Introduction to ```git```
 
----
-
-### Let's ```git``` going
+## Introduction to `git`
 
 ---
+class: center, middle
+
+### Let's `git` going
+
+---
+class: center, middle
 
 #### This is classic Linus Torvalds
 <img src="img/01_introduction_to_git_01.jpeg" alt="Linus Torvalds">
 
 ---
+class: center, middle
 
 #### This is recent Linus Torvalds
 <img src="img/01_introduction_to_git_02.jpeg" alt="Linus Torvalds">
 
 ---
+class: center, middle
 
 #### This is artwork of Linus Torvalds
 <img src="img/01_introduction_to_git_04.jpeg" alt="Linus Torvalds" style="width:200px">
@@ -40,13 +46,14 @@ output:
 <img src="img/01_introduction_to_git_07.jpeg" alt="Linus Torvalds" style="width:200px">
 
 ---
+class: center, middle
 
 #### This is also Linus Torvalds (but let's not talk about it)
 <img src="img/01_introduction_to_git_03.jpeg" alt="Linus Torvalds">
 
 ---
 
-#### The Story of ```git```
+#### The Story of `git`
 **"I'm an egoistical bastard, and I name all my projects after myself. First 'Linux', now 'Git'"**
 - Developed after licensing blocked free usage of BitKeeper since company broke down (2005)
 - First version after a couple of days
@@ -54,7 +61,7 @@ output:
 
 ---
 
-#### ```git``` is a DVCS
+#### `git` is a DVCS
 
 ```bash
 nrcd-osx-003855:git-workshop koch$ tig
@@ -66,11 +73,11 @@ nrcd-osx-003855:git-workshop koch$ tig
 - Taking "snapshots" of your project at any time point
      - Go back to any snapshot and its current state of the project
 
-- A folder structure that ```git``` keeps track of is called a **"repository"**
+- A folder structure that `git` keeps track of is called a **"repository"**
 
 ---
 
-#### ```git``` is a DVCS
+#### `git` is a DVCS
 
 ```bash
 nrcd-osx-003855:git-workshop koch$ tig
@@ -86,13 +93,13 @@ nrcd-osx-003855:git-workshop koch$ tig
 
 ---
 
-#### The power of the ```remote```
+#### The power of the `remote`
 
 - "**Distributed** Version Control System"
 
 <!-- "Cloud-local" picture -->
 
-- Instead of on your ```local``` machine these repositories can also be set up on a ```remote``` location!
+- Instead of on your `local` machine these repositories can also be set up on a `remote` location!
      - GitLab, GitHub, BitBucket
      
 - The pros:
@@ -105,15 +112,28 @@ nrcd-osx-003855:git-workshop koch$ tig
 #### Today we will...
 
 - ...give an overview of the **basics commands**
-    - ```git status```, ```git add```, ```git commit```, ```git push```, ```git pull```, ```git merge```, ```git checkout```
+
+```bash
+git status
+git add
+git commit
+git push
+git pull
+git merge
+git checkout
+```
+
 - ...introduce a **workflow guideline** to avoid problems
      - Using branches and merging
+
 - ...learn about **collaborative work** using GitLab
     - in lab use-case example
     - Dealing with merge conflicts
     - Git issues
+
 - ...cover project management using GitLab
-- ...end with some advanced usage of ```git```
+
+- ...end with some advanced usage of `git`
 
 ---
 
