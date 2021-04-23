@@ -160,9 +160,12 @@ tig
 .center[**Distributed** Version Control System]
 
 .pull-left[
+.center[
 <img src="img/01_introduction_to_git_09.png" alt="cloud">
+]
 
-.center[<img src="img/01_introduction_to_git_10.png" alt="GitLab logo" style="width:100px">
+.center[
+<img src="img/01_introduction_to_git_10.png" alt="GitLab logo" style="width:100px">
 <img src="img/01_introduction_to_git_11.png" alt="GitHub logo" style="width:100px">
 ]
 ]
@@ -188,6 +191,13 @@ Instead of on your `local` machine these repositories can also be set up on a **
 ]
 
 ---
+class: middle
+
+.center[
+<img src="img/01_introduction_to_git_14.png" alt="Gitlab Website" style="width:1000px">
+]
+
+---
 
 #### Today we will...
 
@@ -197,11 +207,11 @@ Instead of on your `local` machine these repositories can also be set up on a **
 git status
 git add
 git commit
-git push
-git pull
 git checkout
 git merge
 git clone
+git push
+git pull
 ```
 
 --
@@ -315,7 +325,7 @@ usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
 **Let's tell git to do exactly that!**
 
 - Create new `git_workshop` folder in our home directory
-- Tell `git` to keep track of it 
+- Tell `git` to keep track of it
 
 ```bash
 cd ~
@@ -342,7 +352,9 @@ Initialized empty Git repository in /Users/koch/git_workshop/.git/
 touch README.md
 ```
 
-We can regularly check what `git` thinks by using the `status` command
+--
+
+We can regularly check what `git` thinks by using the `git status` command
 
 ```bash
 git status
@@ -376,8 +388,8 @@ It lists our newly created file `README.md` as an **untracked file**!
 --
 
 **How do I tell `git` to keep track of a file?**
-- Use the `add` command to add the file to be tracked
-- Check if `git` now keeps track with the `status` command
+- Use the `git add` command to add the file to be tracked
+- Check if `git` now keeps track with the `git status` command
 
 ```bash
 git add README.md
@@ -631,6 +643,8 @@ On branch master
 	modified:   README.md
 ```
 
+--
+
 **No! Let's stage our changes...**
 
 ```bash
@@ -657,6 +671,8 @@ git commit -m 'Changes to README'
 [master ffaf3f8] Changes to README
  1 file changed, 1 insertion(+)
 ```
+
+--
 
 **...and look at our history**
 
@@ -712,7 +728,7 @@ tig
 
 ***
 
-However, there are still some things to understand to use `git` how it is intended to be used:
+However, there are still some things to understand to use `git` the way it is intended to be used:
 
 - **Avoid files from being tracked** that you don't care about
      - The `.gitignore` file
@@ -729,4 +745,442 @@ git push
 git pull
 ```
 
+---
+class: middle
 
+## `git`: The not-so-much basics
+
+---
+
+### The `.gitignore`
+
+Some files in our folder structure are annoying to track:
+- **Very large files:** Commands take super long (`git add`, `git commit`, `git status`, ...)
+- Files that can't be changed without changing the complete file (e.g. `.pdf`, images, ...)
+- **`.DS_Store`**: God damn you, `.DS_Store`!
+
+Luckily, `git` can read a text file in which you can collect all of the stuff **you don't want to track**, but still **don't want to delete**!
+
+***
+
+Let's create a `.gitignore` and fill it with a few things to ignore
+
+```
+touch .gitignore
+echo "*.pdf" >> .gitignore
+echo "*DS_Store" >> .gitignore
+```
+
+.center[
+**Let's see if it works!**
+]
+
+
+---
+
+**Create an undesired file:**
+
+```
+touch .DS_Store
+```
+
+***
+
+**Check if `git` lists the new file**
+
+```
+git status
+```
+
+```
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.gitignore
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+Note how the `.DS_Store` file we created **does not show up as an untracked file** since it is ignored by **being listed in the `.gitignore`**!
+
+***
+
+**Let's not forget about commiting your changes, though!**
+
+```
+git add -A
+gti commit -m 'Added .gitignore'
+```
+
+---
+class: middle
+
+**An example for a `.gitignore`**
+
+```
+ # Exclude MacOS junk
+ .DS_Store
+ ._.DS_Store
+
+ # Exclude temporary files
+ *._*
+ *._anon*
+
+ # Exclude .html files
+ *.html
+
+ # Exclude data directories from tracking
+ bids/
+ sourcedata/
+```
+
+-  use a `*` as wildcard (placeholder for any text)
+- `bids/` will ignore the complete directory called `bids`
+
+---
+
+### Branching
+
+Sometimes you are about to introduce some big changes which might cause some problems!
+
+Best to keep a version around that is untouched!
+
+.center[
+<img src="img/01_introduction_to_git_15.png" alt="cloud" style="width:600px">
+]
+
+---
+
+**Let's create a branch and switch to it:**
+
+```
+git branch test_branch
+git checkout test_branch
+```
+
+or
+
+```
+git checkout -b test_branch
+```
+
+***
+
+--
+
+**Does `git` tell us on which branch we are?**
+
+```
+git status
+```
+
+```
+*On branch test_branch
+nothing to commit, working tree clean
+```
+
+***
+
+While we are on this branch, we can do whatever we want! **The `main` branch** (which we were on previously) **will remain unchanged!**
+
+---
+
+**Let's work a little while we are on this branch:**
+
+Add some lines to our `README.md`:
+
+```
+echo '# Git workshop' >> README.md
+echo 'This is an example repository.' >> README.md
+```
+
+***
+
+Check what changes we introduced:
+
+```
+git status
+```
+
+```
+On branch test_branch
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   README.md
+```
+
+***
+
+And stage and commit our changes:
+
+```
+git add -A
+git commit -m 'Edit README.md'
+```
+
+---
+
+### Merging
+
+If our big changes are all okay and don't produce problems we might want to **keep them around in our main project!**
+
+This is done by switching to the branch that should adopt the changes and using **`git merge`**
+
+***
+
+**Switch to the master branch:**
+
+```
+git checkout master
+```
+
+```
+Switched to branch 'master'
+```
+
+***
+
+**And introduce the changes of our `test_branch` into the `master` branch**
+
+```
+git merge test_branch
+```
+
+```
+Updating e2a2062..d60031a
+Fast-forward
+ README.md | 2 ++
+* 1 file changed, 2 insertions(+)
+```
+
+---
+
+### Merging
+
+.center[
+<img src="img/01_introduction_to_git_16.png" alt="cloud" style="width:500px">
+]
+
+***
+
+Afterwards we can (**but don't have to!**) delete the branch we created:
+
+```
+git branch -d test_branch
+```
+
+```
+Deleted branch test_branch (was d60031a).
+```
+
+---
+
+### Connecting a remote and a local repository
+
+Let's say you want to create a new research project and keep track of it using `git`!
+
+In our case it is the easiest to create a project on the `remote` (GitLab, https://git.mpib-berlin.mpg.de/)!
+
+.center[
+<img src="img/01_introduction_to_git_17.png" alt="cloud" style="width:1000px">
+]
+
+---
+class: middle
+
+Here we can **create a blank project**:
+
+.center[
+<img src="img/01_introduction_to_git_18.png" alt="cloud" style="width:1000px">
+]
+
+- Make sure to check the **Initialize repository with README**-option
+- The README should later be used to describe the project and workflow
+
+---
+
+### Cloning
+
+For now this repository **only exists on the `remote` (GitLab)**
+
+- Technically, we could use the website to create new files/edit them
+- But we usually want to work on it locally (e.g. coding, etc.)
+
+To put a copy of the repository on your own machine you can use **`git clone`**
+
+- `git clone` takes the **address of the remote repository** as input and clones this repository to your own machine
+
+***
+
+**`1.` Get the address of your remote repository**
+
+.center[
+<img src="img/01_introduction_to_git_19.png" alt="cloud" style="width:1000px">
+]
+
+---
+
+### Cloning
+
+**`2.` Create a clone of the repository on your own machine**
+
+Change to the location the repository should be in:
+
+```
+cd ~
+```
+
+***
+
+In the directory clone the repository with the address you got from the `remote`:
+
+```
+git clone https://git.mpib-berlin.mpg.de/koch/git-workshop-example.git
+```
+
+```
+Cloning into 'git-workshop-example'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+```
+
+---
+
+### Pushing and pulling
+
+Now you can work locally on the repository! However, there is one problem:
+
+.center[> How is the `remote` supposed to know about the changes I made?]
+
+***
+
+The `remote`...
+- ...exists separately from your local repository
+- ...can be **behind on the changes you made locally**:
+     - So you need to tell the `remote` to adopt them!
+- ...can be **ahead of your last local changes**:
+     - especially if other people work on the same repository
+     - You need to introduce the changes made on the `remote` to your local files!
+     
+This is where our two final commands come into play:
+
+```
+git push
+git pull
+```
+
+---
+
+**`1.` Your local commits are ahead of the `remote`**
+
+Let's say we made some changes, staged them, and committed them:
+
+```
+touch .gitignore
+echo '*DS_Store' >> .gitignore
+git add -A
+git commit -m 'Added gitignore'
+```
+
+***
+
+Since we are connected with a remote we get some additional info from using
+
+```
+git status
+```
+
+```
+On branch master
+*Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+```
+
+---
+
+The **`remote`** will adopt the changes when we use
+
+```
+git push origin master
+```
+
+```
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 296 bytes | 296.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://git.mpib-berlin.mpg.de/koch/git-workshop-example.git
+   1a4f1da..6774315  master -> master
+```
+
+***
+
+And this will also show up in the `remote` repository:
+
+.center[
+<img src="img/01_introduction_to_git_20.png" alt="cloud" style="width:600px">
+]
+
+---
+
+**`2.` Your local commits are behind compared to the `remote`**
+
+Now lets say your colleague added some lines to the `README.md` and pushed the changes to the remote.
+
+***
+
+We can find out about that by first updating what we know about the remote:
+
+```
+git remote update
+```
+
+***
+
+And then checking where our commits are compared to it:
+
+```
+git status
+```
+
+```
+On branch master
+*Your branch is behind 'origin/master' by 1 commit, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+```
+
+---
+
+We will **adopt the changes made to the `remote`** by using:
+
+```
+git pull origin
+```
+
+```
+Updating 6774315..625cb75
+Fast-forward
+ README.md | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+```
+
+---
+
+***
+.center[
+**This cover the not-so-much basics of the `git` commands!**
+]
+***
+
+**We talked about...**
+
+- ...how to create and work on `branches` to leave your main project save from possible harm
+- ...`merging` different branches
+- ...connecting a `remote` repository to a local one on your machine
+- ...`pushing` to / `pulling from` the `remote`
