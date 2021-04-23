@@ -453,7 +453,9 @@ Committed
 .right-column[
 Files that were changed but have not yet been added
 
-*Image of scattered notes/pages*
+.center[
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Scattered_white_paper_%28Unsplash%29.jpg" alt="scattered notes" style="width:300px">
+]
 ]
 
 ---
@@ -518,7 +520,11 @@ Committed
 
 Files that will be tracked as soon as we "commit" to it
 
-*Image of notes/pages being put in folder*
+
+
+.center[
+<img src="https://live.staticflickr.com/7409/13906283419_cb24a07cfa_b.jpg" alt="sorted notes" style="width:500px">
+]
 
 ]
 
@@ -592,6 +598,44 @@ git commit -m 'Added README.md'
  create mode 100644 README.md
 ```
 
+.center[
+<img src="https://live.staticflickr.com/3784/9563423274_743986bd15_b.jpg" alt="file cabinet" style="width:200px">
+]
+]
+
+---
+
+### Staging and commiting
+
+.left-column[
+.center[
+.pull-left[
+Untracked
+
+|
+
+Staged
+
+|
+
+**Committed**
+]
+]
+]
+
+.right-column[
+
+
+```bash
+git commit -m 'Added README.md'
+```
+
+```bash
+[master (root-commit) 214c62b] Added README.md
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 README.md
+```
+
 ***
 
 **Congrats!**
@@ -626,6 +670,7 @@ index e69de29..eb43af5 100644
 @@ -0,0 +1 @@
 *+My first git project!
 ```
+
 
 ---
 

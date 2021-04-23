@@ -31,4 +31,5 @@ class: middle
 ### Permissions and roles
 
 - Each `remote` repository can have multiple members
+- but not all members should be able to do everything
 
