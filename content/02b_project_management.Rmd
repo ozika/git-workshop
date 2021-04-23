@@ -1,0 +1,34 @@
+---
+title: "02b_project_management"
+subtitle: "Introduction"
+author: "Lennart Wittkuhn, Christoph Koch, Ondrej Zika"
+institute: "Max Planck Research Group NeuroCode"
+date: "2016/12/12 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    self_contained: true
+    yolo: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+## Using `git` and Gitlab for project management
+
+---
+
+### Content
+
+- Using `git` issues
+- Documentation and wiki
+- Permissions and roles
+
+---
+
+### Permissions and roles
+
+- Each `remote` repository can have multiple members
+
