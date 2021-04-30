@@ -95,7 +95,7 @@ tig
 2021-02-17 17:59 +0100 Koch           o Add correction of pulse flucs
 ```
 
-.center[Distributed Version Control System]
+.center[**Distributed Version Control System**]
 
 --
 
@@ -159,6 +159,8 @@ tig
 
 .center[**Distributed** Version Control System]
 
+--
+
 .pull-left[
 .center[
 <img src="img/01_introduction_to_git_09.png" alt="cloud">
@@ -186,7 +188,6 @@ Instead of on your `local` machine these repositories can also be set up on a **
      - Suggest changes
      - Fix problems
 - Sharing
-     - Make code for your analysis available for everyone
      - Yay! Open Science!
 ]
 
@@ -932,7 +933,7 @@ While we are on this branch, we can do whatever we want! **The `main` branch** (
 
 **Let's work a little while we are on this branch:**
 
-Add some lines to our `README.md`:
+**Add some lines to our `README.md`:**
 
 ```
 echo '# Git workshop' >> README.md
@@ -941,7 +942,7 @@ echo 'This is an example repository.' >> README.md
 
 ***
 
-Check what changes we introduced:
+**Check which changes we introduced:**
 
 ```
 git status
@@ -957,7 +958,7 @@ Changes not staged for commit:
 
 ***
 
-And stage and commit our changes:
+**And stage and commit our changes:**
 
 ```
 git add -A
@@ -970,7 +971,7 @@ git commit -m 'Edit README.md'
 
 If our big changes are all okay and don't produce problems we might want to **keep them around in our main project!**
 
-This is done by switching to the branch that should adopt the changes and using **`git merge`**
+This is done by **switching to** the **branch that should adopt** the changes and using **`git merge`**
 
 ***
 
@@ -1111,7 +1112,7 @@ The `remote`...
      - especially if other people work on the same repository
      - You need to introduce the changes made on the `remote` to your local files!
      
-This is where our two final commands come into play:
+**This is where our two final commands come into play:**
 
 ```
 git push
