@@ -38,7 +38,11 @@ class: middle
      - `1.` `Open` (Still relevant, under discussion)
      - `2.` `Closed` (Fixed, not relevant anymore, part of history)
      
-<!-- Git issue screenshot -->
+.center[
+<img src="img/02b_project_management-04.png" alt="cloud" style="width:400px">
+]
+
+- Integrated discussion feature
 
 ---
 
@@ -54,8 +58,8 @@ class: middle
 ### `1.` Using `git` issues
 
 **How to manage issues?**
-- Use tags
 - Describe problem understandibly
+- Use labels
 - Tag relevant people
 - Close if fixed
 
