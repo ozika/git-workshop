@@ -1,12 +1,8 @@
-stages:
-  - publish
-
 pages:
   stage: publish
   image: registry.git.mpib-berlin.mpg.de/neurocode/git-workshop/xaringan:latest
   script:
-    # note that 'git-advanced.Rmd' should be replaced with main file at some point: 
-    - Rscript -e "rmarkdown::render('git-advanced.Rmd', 'all', output_dir = 'public', output_file = 'index.html')"
+    - Rscript -e "rmarkdown::render('index.Rmd', 'all', output_dir = 'public', output_file = 'index.html')"
   artifacts:
     paths:
       - public
