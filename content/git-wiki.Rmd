@@ -43,8 +43,6 @@ opts_chunk$set(
   )
 ```
 
----
-
 # The MPRG NeuroCode wiki
 
 The wiki is available<sup>1</sup> at https://git.mpib-berlin.mpg.de/neurocode/wiki
@@ -296,7 +294,7 @@ nav:
 
 ---
 
-# Edit `nav`
+# Edit the navigation ("nav")
 
 We open `mkdocs.yml` in a text editor (e.g., `vim mkdocs.yml`) and add the new page `admin/new_page.md` to the `nav` items.
 `git diff mkdocs.yml` can show us the changes:
@@ -349,7 +347,7 @@ Finish with
 
 ---
 
-# Install `mkdocs`
+# Install mkdocs
 
 ```{bash, eval=FALSE}
 $ mkdocs serve
@@ -425,7 +423,7 @@ The rendered website will update automatically as you make changes! 😲
 
 ---
 
-# `.gitlab-ci.yml` file of our wiki
+# .gitlab-ci.yml file of our wiki
 
 `$ cat .gitlab-ci.yml `:
 
@@ -450,6 +448,16 @@ pages: # gitlab pages allows to publish static websites
   only:
   - master # only do this when new changes are pushed to the master branch
 ```
+
+---
+
+# The end
+
+```{r, echo=FALSE, out.width="65%", fig.cap="<sup>Screenshot of the MPRG NeuroCode wiki (taken 2021-06-08)</sup>"}
+knitr::include_graphics("img/git-wiki-screenshot-website.png")
+```
+
+
 
 
 
