@@ -1,7 +1,7 @@
 ---
-title: "01_introduction_to_git"
+title: "Introduction to `git`"
 subtitle: "Introduction"
-author: "Lennart Wittkuhn, Christoph Koch, Ondrej Zika"
+author: "Lennart Wittkuhn, Ondrej Zika, Christoph Koch"
 institute: "Max Planck Research Group NeuroCode"
 date: "2016/12/12 (updated: `r Sys.Date()`)"
 output:
@@ -10,7 +10,7 @@ output:
     yolo: false
     lib_dir: libs
     nature:
-      highlightStyle: github
+      highlightStyle: solarized-light
       highlightLines: true
       countIncrementalSlides: false
 ---
@@ -145,13 +145,17 @@ tig
 2021-02-17 17:59 +0100 Koch           o Add correction of pulse flucs
 ```
 
+- Can work as a **organisational tool**
+  - save **one file and all of its history** instead of multiple versions of the same file
 - Can work as a **time machine**
-  - Restore projects at specific snapshots
-  - Compare different snapshots
-  
-> *Oh no, my decoding results completely changed compared to last time I checked!*
-> 
-> *What did I change since then?*
+  - **Restore** projects at specific snapshots
+  - **Compare** different snapshots
+
+---
+
+.center[
+<img src="img/01_introduction_to_git_23.png" alt="phdcomics" style="width:450px">
+]
 
 ---
 
@@ -202,12 +206,13 @@ class: middle
 
 #### Today we will...
 
-- ...give an overview of the **basics commands**
+- ...give an overview of the **basics commands** **|** *Christoph*
 
 ```bash
 git status
 git add
 git commit
+git branch
 git checkout
 git merge
 git clone
@@ -217,23 +222,20 @@ git pull
 
 --
 
-- ...introduce a **workflow guideline** to avoid problems
+- ...introduce a **workflow guideline** to avoid problems **|** *Ondrej*
      - Using branches and merging
 
 --
 
-- ...learn about **collaborative work** using GitLab
+- ...learn about **collaborative work** using GitLab **|** *Ondrej*
     - in lab use-case example
     - Dealing with merge conflicts
     - Git issues
+    - **project management** using GitLab
 
 --
 
-- ...cover **project management** using GitLab
-
---
-
-- ...end with some **advanced usage** of `git`
+- ...end with some **advanced usage** of `git` **|** *Lennart*
 
 ---
 class: center, middle
@@ -316,6 +318,23 @@ usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
 ]
 
 ---
+
+#### Gitkraken
+
+.center[
+<img src="img/01_introduction_to_git_22.png" alt="cloud" style="width:800px">
+]
+
+---
+
+#### GitUp
+
+.center[
+<img src="img/01_introduction_to_git_21.gif" alt="cloud" style="width:500px">
+]
+
+---
+
 
 ### Creating a `git` repository
 
@@ -564,6 +583,11 @@ git commit -m 'My commit message'
 - This will commit to all prepared changes/things to keep track of
 - It also adds a tiny message (written by you) what was done
 
+***
+
+**Rule:** Make commits topic-consistent and easy to digest so it's easier to know what was done
+
+
 ]
 
 ---
@@ -776,14 +800,20 @@ tig
 
 However, there are still some things to understand to use `git` the way it is intended to be used:
 
+--
+
 - **Avoid files from being tracked** that you don't care about
      - The `.gitignore` file
+  
+--
      
 - Keep your main project safe while still **trying out new things** (that might produce errors)
 ```bash
 git branch
 git checkout
 ```
+
+--
 
 - Interact with the **`remote`** (e.g. GitLab)
 ```bash
@@ -800,45 +830,53 @@ class: middle
 
 ### The `.gitignore`
 
-Some files in our folder structure are annoying to track:
+.center[
+Some files are **annoying** if they are tracked:
+]
 - **Very large files:** Commands take super long (`git add`, `git commit`, `git status`, ...)
 - Files that can't be changed without changing the complete file (e.g. `.pdf`, images, ...)
 - **`.DS_Store`**: God damn you, `.DS_Store`!
 
+.center[
+Some files are **pointless** to track:
+]
+- Every file that is **created by code** in your repository
+
+--
+
 Luckily, `git` can read a text file in which you can collect all of the stuff **you don't want to track**, but still **don't want to delete**!
+
+--
 
 ***
 
 Let's create a `.gitignore` and fill it with a few things to ignore
 
-```
+```bash
 touch .gitignore
 echo "*.pdf" >> .gitignore
 echo "*DS_Store" >> .gitignore
 ```
 
-.center[
-**Let's see if it works!**
-]
-
-
 ---
 
 **Create an undesired file:**
 
-```
+```bash
 touch .DS_Store
 ```
+
+--
 
 ***
 
 **Check if `git` lists the new file**
 
-```
+```bash
 git status
 ```
 
-```
+```bash
 On branch master
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
@@ -849,11 +887,13 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 Note how the `.DS_Store` file we created **does not show up as an untracked file** since it is ignored by **being listed in the `.gitignore`**!
 
+--
+
 ***
 
 **Let's not forget about commiting your changes, though!**
 
-```
+```bash
 git add -A
 gti commit -m 'Added .gitignore'
 ```
@@ -863,7 +903,7 @@ class: middle
 
 **An example for a `.gitignore`**
 
-```
+```bash
  # Exclude MacOS junk
  .DS_Store
  ._.DS_Store
@@ -899,14 +939,14 @@ Best to keep a version around that is untouched!
 
 **Let's create a branch and switch to it:**
 
-```
+```bash
 git branch test_branch
 git checkout test_branch
 ```
 
 or
 
-```
+```bash
 git checkout -b test_branch
 ```
 
@@ -916,11 +956,11 @@ git checkout -b test_branch
 
 **Does `git` tell us on which branch we are?**
 
-```
+```bash
 git status
 ```
 
-```
+```bash
 *On branch test_branch
 nothing to commit, working tree clean
 ```
@@ -935,20 +975,22 @@ While we are on this branch, we can do whatever we want! **The `main` branch** (
 
 **Add some lines to our `README.md`:**
 
-```
+```bash
 echo '# Git workshop' >> README.md
 echo 'This is an example repository.' >> README.md
 ```
+
+--
 
 ***
 
 **Check which changes we introduced:**
 
-```
+```bash
 git status
 ```
 
-```
+```bash
 On branch test_branch
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
@@ -956,11 +998,13 @@ Changes not staged for commit:
 	modified:   README.md
 ```
 
+--
+
 ***
 
 **And stage and commit our changes:**
 
-```
+```bash
 git add -A
 git commit -m 'Edit README.md'
 ```
@@ -977,11 +1021,11 @@ This is done by **switching to** the **branch that should adopt** the changes an
 
 **Switch to the master branch:**
 
-```
+```bash
 git checkout master
 ```
 
-```
+```bash
 Switched to branch 'master'
 ```
 
@@ -989,11 +1033,11 @@ Switched to branch 'master'
 
 **And introduce the changes of our `test_branch` into the `master` branch**
 
-```
+```bash
 git merge test_branch
 ```
 
-```
+```bash
 Updating e2a2062..d60031a
 Fast-forward
  README.md | 2 ++
@@ -1012,11 +1056,11 @@ Fast-forward
 
 Afterwards we can (**but don't have to!**) delete the branch we created:
 
-```
+```bash
 git branch -d test_branch
 ```
 
-```
+```bash
 Deleted branch test_branch (was d60031a).
 ```
 
@@ -1026,7 +1070,7 @@ Deleted branch test_branch (was d60031a).
 
 Let's say you want to create a new research project and keep track of it using `git`!
 
-In our case it is the easiest to create a project on the `remote` (GitLab, https://git.mpib-berlin.mpg.de/)!
+In our case it is the easiest to create a project on the `remote` (GitLab, https://git.mpib-berlin.mpg.de/ )!
 
 .center[
 <img src="img/01_introduction_to_git_17.png" alt="cloud" style="width:1000px">
@@ -1057,6 +1101,8 @@ To put a copy of the repository on your own machine you can use **`git clone`**
 
 - `git clone` takes the **address of the remote repository** as input and clones this repository to your own machine
 
+--
+
 ***
 
 **`1.` Get the address of your remote repository**
@@ -1071,9 +1117,9 @@ To put a copy of the repository on your own machine you can use **`git clone`**
 
 **`2.` Create a clone of the repository on your own machine**
 
-Change to the location the repository should be in:
+Change to the location the repository should be in, e.g.:
 
-```
+```bash
 cd ~
 ```
 
@@ -1081,11 +1127,11 @@ cd ~
 
 In the directory clone the repository with the address you got from the `remote`:
 
-```
+```bash
 git clone https://git.mpib-berlin.mpg.de/koch/git-workshop-example.git
 ```
 
-```
+```bash
 Cloning into 'git-workshop-example'...
 remote: Enumerating objects: 3, done.
 remote: Counting objects: 100% (3/3), done.
@@ -1102,6 +1148,8 @@ Now you can work locally on the repository! However, there is one problem:
 
 .center[> How is the `remote` supposed to know about the changes I made?]
 
+--
+
 ***
 
 The `remote`...
@@ -1111,10 +1159,12 @@ The `remote`...
 - ...can be **ahead of your last local changes**:
      - especially if other people work on the same repository
      - You need to introduce the changes made on the `remote` to your local files!
-     
+
+--
+
 **This is where our two final commands come into play:**
 
-```
+```bash
 git push
 git pull
 ```
@@ -1125,7 +1175,7 @@ git pull
 
 Let's say we made some changes, staged them, and committed them:
 
-```
+```bash
 touch .gitignore
 echo '*DS_Store' >> .gitignore
 git add -A
@@ -1136,11 +1186,11 @@ git commit -m 'Added gitignore'
 
 Since we are connected with a remote we get some additional info from using
 
-```
+```bash
 git status
 ```
 
-```
+```bash
 On branch master
 *Your branch is ahead of 'origin/master' by 1 commit.
   (use "git push" to publish your local commits)
@@ -1150,11 +1200,11 @@ On branch master
 
 The **`remote`** will adopt the changes when we use
 
-```
+```bash
 git push origin master
 ```
 
-```
+```bash
 Enumerating objects: 4, done.
 Counting objects: 100% (4/4), done.
 Delta compression using up to 8 threads
@@ -1164,6 +1214,8 @@ Total 3 (delta 0), reused 0 (delta 0)
 To https://git.mpib-berlin.mpg.de/koch/git-workshop-example.git
    1a4f1da..6774315  master -> master
 ```
+
+--
 
 ***
 
@@ -1183,7 +1235,7 @@ Now lets say your colleague added some lines to the `README.md` and pushed the c
 
 We can find out about that by first updating what we know about the remote:
 
-```
+```bash
 git remote update
 ```
 
@@ -1191,11 +1243,11 @@ git remote update
 
 And then checking where our commits are compared to it:
 
-```
+```bash
 git status
 ```
 
-```
+```bash
 On branch master
 *Your branch is behind 'origin/master' by 1 commit, and can be fast-forwarded.
   (use "git pull" to update your local branch)
@@ -1205,11 +1257,11 @@ On branch master
 
 We will **adopt the changes made to the `remote`** by using:
 
-```
+```bash
 git pull origin
 ```
 
-```
+```bash
 Updating 6774315..625cb75
 Fast-forward
  README.md | 4 +++-

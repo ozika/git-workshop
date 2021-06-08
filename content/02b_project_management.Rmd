@@ -1,6 +1,5 @@
 ---
-title: "02b_project_management"
-subtitle: "Introduction"
+title: "**Intermezzo:** Project management with `git`"
 author: "Lennart Wittkuhn, Christoph Koch, Ondrej Zika"
 institute: "Max Planck Research Group NeuroCode"
 date: "2016/12/12 (updated: `r Sys.Date()`)"
@@ -10,7 +9,7 @@ output:
     yolo: false
     lib_dir: libs
     nature:
-      highlightStyle: github
+      highlightStyle: solarized-light
       highlightLines: true
       countIncrementalSlides: false
 ---
@@ -37,31 +36,51 @@ class: middle
 - Has **two states:**
      - `1.` `Open` (Still relevant, under discussion)
      - `2.` `Closed` (Fixed, not relevant anymore, part of history)
-     
-.center[
-<img src="img/02b_project_management-04.png" alt="cloud" style="width:400px">
-]
-
 - Integrated discussion feature
+
+--
+
+.center[
+<img src="img/02b_project_management-04.png" alt="cloud" style="width:500px">
+]
 
 ---
 
 ### `1.` Using `git` issues
 
-**Why are issues useful?**
-- To-Do/list of tasks/problems
-- Interactive and documented discussions
-- Even when closed will still be part of the history (wait I had this problem, too, let me show you my issue on this)
+**Why are issues useful?** (scientific perspective)
+- **To-Do**/list of tasks/problems
+  - e.g. tracking and addressing comments of reviewers
+- Interactive and documented **discussions** of solution/topic
+- Even when closed will still be part of the **history**
+  - Does never change location/easy to find again
+> *Wait, I had this problem, too! Let me show you my issue on this*
+
+--
+
+.center[
+<img src="img/02b_project_management-05.png" alt="cloud" style="width:450px">
+]
 
 ---
 
 ### `1.` Using `git` issues
 
 **How to manage issues?**
-- Describe problem understandibly
-- Use labels
-- Tag relevant people
+- When opening:
+  - Describe problem understandably
+  - Use labels
+  - Tag relevant people
+- When discussing:
+  - Use threads and the reply function
 - Close if fixed
+
+--
+
+.center[
+<img src="img/02b_project_management-06.png" alt="cloud" style="width:700px">
+]
+
 
 ---
 
@@ -69,7 +88,11 @@ class: middle
 
 **GitLab issue boards**
 
-<!-- issue board screenshot -->
+- Project management interface (similar to e.g. Trello)
+
+.center[
+<img src="img/02b_project_management-07.png" alt="cloud" style="width:700px">
+]
 
 ---
 
