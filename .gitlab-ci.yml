@@ -1,3 +1,5 @@
+stages:
+  - publish
 pages:
   stage: publish
   image: registry.git.mpib-berlin.mpg.de/neurocode/git-workshop/xaringan:latest
