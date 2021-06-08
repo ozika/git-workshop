@@ -14,4 +14,4 @@ RUN apt-get install -y pandoc pandoc-citeproc && apt-get clean
 #r-cran-xaringan
 
 # add missing source packages in blocks of 4
-RUN Rscript -e "installOrQuit(c('xaringan'))"
+RUN Rscript -e "installOrQuit(c('xaringan', 'bookdown'))"
