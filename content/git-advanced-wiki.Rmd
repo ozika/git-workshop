@@ -17,7 +17,9 @@ output:
 ---
 
 ```{r, echo=FALSE}
-library(xaringan)
+if (!requireNamespace("pacman")) install.packages("pacman")
+packages_cran = c("here", "xaringan", "bookdown")
+pacman::p_load(char = packages_cran)
 # xaringan::inf_mr()
 # http://jenrichmond.rbind.io/post/infinite-moon-reader/
 ```
