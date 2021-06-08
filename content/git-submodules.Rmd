@@ -1,6 +1,6 @@
 ---
 title: "Git Workshop"
-subtitle: "Advanced stuff"
+subtitle: "Working with Git submodules"
 author: "Christoph Koch, Ondrej Zika, Lennart Wittkuhn"
 institute: "Max Planck Research Group NeuroCode"
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
