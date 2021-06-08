@@ -57,12 +57,12 @@ render_xaringan = function(name, path_rmd){
 
 # Agenda
 
-## 04 Project documentation using `mkdocs` and `git`
+## 03 Git Submodules
 
 ```{r, echo=FALSE, results="hide", message=FALSE, warning=FALSE}
 path_html = render_xaringan(
-  name = "git-advanced-wiki",
-  path_rmd = here::here("content", "git-advanced-wiki.Rmd")
+  name = "git-submodules",
+  path_rmd = here::here("content", "git-submodules.Rmd")
   )
 ```
 
@@ -70,7 +70,26 @@ path_html = render_xaringan(
 ```{r, echo=FALSE, results="asis"}
 cat(paste0('- <a href="', path_html, '" target="_blank">Download slides</a>'))
 ```
-- [Source code on GitLab](https://git.mpib-berlin.mpg.de/neurocode/git-workshop/-/blob/master/content/git-advanced-wiki.Rmd)
+- [Source code on GitLab](https://git.mpib-berlin.mpg.de/neurocode/git-workshop/-/blob/master/content/git-submodules.Rmd)
+
+```{r, echo=FALSE}
+knitr::include_url(path_html)
+```
+
+## 04 Working with the wiki using Git
+
+```{r, echo=FALSE, results="hide", message=FALSE, warning=FALSE}
+path_html = render_xaringan(
+  name = "git-wiki",
+  path_rmd = here::here("content", "git-wiki.Rmd")
+  )
+```
+
+- Presenter: Lennart Wittkuhn
+```{r, echo=FALSE, results="asis"}
+cat(paste0('- <a href="', path_html, '" target="_blank">Download slides</a>'))
+```
+- [Source code on GitLab](https://git.mpib-berlin.mpg.de/neurocode/git-workshop/-/blob/master/content/git-wiki.Rmd)
 
 ```{r, echo=FALSE}
 knitr::include_url(path_html)
