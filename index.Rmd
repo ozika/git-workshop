@@ -1,0 +1,77 @@
+---
+title: "Git Workshop"
+author: "Christoph Koch, Ondrej Zika, Lennart Wittkuhn"
+affiliation: "Max Planck Research Group NeuroCode"
+date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
+output:
+  bookdown::html_document2:
+    toc: yes
+    self_contained: true
+    toc_float: true
+    toc_depth: 3
+    number_sections: false
+    highlight: pygments
+    theme: darkly
+    code_folding: "hide"
+    df_print: paged
+    fig_caption: true
+fig.align: "center"
+---
+
+## Overview
+
+- [Repo](https://git.mpib-berlin.mpg.de/neurocode/git-workshop/)
+
+```{r, echo=FALSE, message=FALSE}
+# allow duplicate labels: https://bookdown.org/yihui/rmarkdown-cookbook/duplicate-label.html
+options(knitr.duplicate.label = "allow")
+```
+
+```{r, echo=FALSE, message=FALSE}
+if (!requireNamespace("pacman")) install.packages("pacman")
+packages = c("here", "rmarkdown", "bookdown")
+pacman::p_load(char = packages)
+```
+
+```{r, echo=FALSE, results="hide", message=FALSE, warning=FALSE}
+path_images = here::here("content", "img")
+path_public_images = here::here("public", "img")
+```
+
+```{r, echo=FALSE, results="hide", message=FALSE, warning=FALSE}
+# copy input folder to public
+system2(command = "mkdir", args = "public")
+system2(command = "cp", args = sprintf("-r %s %s", path_images, path_public_images))
+```
+
+```{r, echo=FALSE, results="hide"}
+render_xaringan = function(name, path_rmd){
+  path_rmd_copy = here::here("public", paste0(name, ".Rmd"))
+  system2(command = "cp", args = sprintf("%s %s", path_rmd, path_rmd_copy))
+  name_html = paste0(name, ".html")
+  path_html = here::here("public", name_html)
+  rmarkdown::render(path_rmd_copy, 'all', output_file = path_html)
+  return(path_html)
+}
+```
+
+# Agenda
+
+## 04 Project documentation using `mkdocs` and `git`
+
+```{r, echo=FALSE, results="hide", message=FALSE, warning=FALSE}
+path_html = render_xaringan(
+  name = "git-advanced-wiki",
+  path_rmd = here::here("content", "git-advanced-wiki.Rmd")
+  )
+```
+
+- Presenter: Lennart Wittkuhn
+```{r, echo=FALSE, results="asis"}
+cat(paste0('- <a href="', path_html, '" target="_blank">Download slides</a>'))
+```
+- [Source code on GitLab](https://git.mpib-berlin.mpg.de/neurocode/git-workshop/-/blob/master/content/git-advanced-wiki.Rmd)
+
+```{r, echo=FALSE}
+knitr::include_url(path_html)
+```
