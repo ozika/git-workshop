@@ -50,8 +50,8 @@ render_xaringan = function(name, path_rmd){
   system2(command = "cp", args = sprintf("%s %s", path_rmd, path_rmd_copy))
   name_html = paste0(name, ".html")
   path_html = here::here("public", name_html)
-  rmarkdown::render(path_rmd_copy, 'all', output_file = path_html)
-  return(path_html)
+  rmarkdown::render(path_rmd_copy, 'all', output_file = path_html, output_dir = "public")
+  return(name_html)
 }
 ```
 
