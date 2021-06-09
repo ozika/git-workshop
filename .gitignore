@@ -1,2 +1,18 @@
+
 ondrej_examples
 .Rhistory
+
+# Ignore MacOS junk files
+
+*.DS_*
+
+# Exclude temporary files
+*._*
+
+# Exclude R junk
+.R*
+libs
+*_cache
+*_files
+public
+*.html
