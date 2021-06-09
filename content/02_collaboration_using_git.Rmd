@@ -1,7 +1,7 @@
 ---
 title: "Collaboration workflow using git"
-author: "Ondřej Zíka"
-date: "4/9/2021"
+author: "Ondřej Zíka, Christoph Koch, Lennart Wittkuhn"
+date: ""
 output: 
   xaringan::moon_reader:
       self_contained: true
@@ -19,22 +19,39 @@ output:
 - branching, staging, commiting, pulling, pushing
 
 #### What will we learn in this section
-1. how to work on the same code at the same time as others
-2. what's the correct workflow
-3. how to spot and solve merge conflicts using gitlab and command line
-4. how to time travel (get a version of one file from long ago)
+1. How to work on the same code at the same time as others
+2. What formal roles should be used
+3. What's the correct workflow
+4. How to spot and solve merge conflicts using gitlab and command line
+5. How to time travel (get a version of one file from long ago)
 
 ---
 ### Motivation 
-- need to work on the same code at the same time
-- contributing to other projects, incl. packages on github
+
+*Cautionary tale: Ondrej's ethics application from 2017:*  
+![](img/pt2_im12.png)
+![](img/pt2_im11.png)
+
+- this involved a large application done by **2** people, how would this look with **2+**?
 
 ---
-### Project roles
-- `maintainer` person responsible for merge requests (usually project leader)
-- `developer` person contributing but not responsible for the repo, can't merge on remote (usually contributors)
-- it's usually good idea to have dedicated person (usually `maintainer`) to manage all merging on remote
 
+### Motivation
+
+- collaborating on the same documents is a problem we have to solve **somehow** (we do it anyway, except **git** provides us with a framework for resolving conflicts)
+- it's much easier to bring people up to speed when asking for help if they can just clone your repo and fix the code
+- the project code/docs is much easier to share with publication
+- contributing to other projects
+
+
+---
+
+### Project roles
+- **maintainer** person responsible for merge requests (usually project leader)
+- **developer** person contributing but not responsible for the repo, can't merge on remote (usually contributors)
+- it's usually good idea to have dedicated person (usually **maintainer**) to manage all merging on remote
+
+[example by Mr. Krause](https://git.mpib-berlin.mpg.de/mpib/aoc2020/-/merge_requests/6)
 --
 
 ### Daily routine
@@ -46,6 +63,16 @@ output:
 6. merge (create a merge request)
 
 ---
+
+#### 1. check
+
+*"Be state aware! GIT is basically an extension of your OFC"* 
+
+![](img/pt2_im13.png)
+![](img/pt2_im15.png)
+
+---
+
 #### 1. check
 
 ```bash
@@ -78,6 +105,13 @@ git pull
 ---
 #### 1. check: troubleshooting
 
+What if this fails?
+
+```bash
+git checkout master
+```
+
+
 **problem** can't merge becuse content on your current branch not commited:
 ```bash
 error: Your local changes to the following files would be overwritten by checkout:
@@ -89,8 +123,8 @@ Aborting
 **solution** stage and commit changes
 
 ```bash
-git add new_file.txt //or add everything new using git add -A
-git commit -m "added new_file.txt"
+git add -A 
+git commit -m "added presentation files"
 ```
 
 **optional** check what the differences are exactly between your current location and `master`
@@ -101,21 +135,46 @@ git diff master
 ---
 #### 2. pull
 
-- most recent version of the code should be on the remote (on the master branch in most cases)
-- if so, simply pull 
+- **most recent version of the code should be on the remote** (on the master branch in most cases)
 ```bash
 git pull
 ```
+**example pull output**
+
+```bash
+remote: Enumerating objects: 237, done.
+remote: Counting objects: 100% (115/115), done.
+remote: Compressing objects: 100% (46/46), done.
+remote: Total 237 (delta 86), reused 90 (delta 69), pack-reused 122
+Receiving objects: 100% (237/237), 45.06 KiB | 3.00 MiB/s, done.
+Resolving deltas: 100% (170/170), completed with 4 local objects.
+From https://git.mpib-berlin.mpg.de/neurocode/wiki
+   8968cec..718c8b4  master     -> origin/master
+Updating 8968cec..718c8b4
+Fast-forward
+ docs/admin/daad.md                                 |  12 ++
+ docs/admin/intranet.md                             |  11 +-
+ docs/it/network-storage.md                         |   3 +-
+ docs/science/ethics.md                             |   3 +-
+ docs/science/mri/HCP-MMP1_atlas_in_native_space.md |   8 +-
+ docs/science/mri/mri-planning-procedure.md         |   7 +
+ docs/science/mri/mri-training.md                   |   6 +-
+ docs/science/onlinestudies/online-studies-guide.md | 141 ++++++++++++++++++++-
+ docs/science/study-planning-procedure.md           | 102 ++++++++++-----
+ 9 files changed, 238 insertions(+), 55 deletions(-)
+```
+
+
 ---
 #### 2. pull troubleshooting
-a. if there is a difference *but not merge conflict* between your local `master` and the remote `master`
+a. if there is a difference **but not merge conflict** between your local `master` and the remote `master`
 - git will automatically merge them, but it will ask you to give a name to the commit
 - this will open default terminal text editor (`emacs`, `vim`, `nano`)
 - on tardis, it's `vim`, you need to press `i` to insert the commit name, then `Esc` followed by a `:wq` [save (w) and exit (q)]
 
 ---
 #### 2. pull troubleshooting
-b. if there *is a merge conflict* between your local `master` and the remote `master`
+b. if there **is a merge conflict** between your local `master` and the remote `master`
 ```bash
 git pull 
 ```
@@ -124,7 +183,13 @@ Auto-merging content/02_collaboration_using_git.Rmd
 CONFLICT (content): Merge conflict in content/02_collaboration_using_git.Rmd
 Automatic merge failed; fix conflicts and then commit the result.
 ```
-open the file that contains conflicts (using any text editor) and find a weird-looking section:
+
+---
+
+#### Dealing with a merge conflict while pulling
+
+- open the file that contains conflicts (**using any text editor**, vim, atom, notepad, rstudio) and find a weird-looking section(**s**):
+
 ```bash
 <<<<<<< HEAD
 text from remote
@@ -133,11 +198,20 @@ my local new much better text
 >>>>>>> 3989e0b850520f2ce7853bd73009449114f13436
 
 ```
-in short the `<<<` show the start of the conflict, the `>>>>>> 39...` (commit ID) show the end, and in the middle there is `====`
-one simply needs to choose which version they want to keep by deleting *all* unwanted text, in our case I want to just keep this:
+in short the `<<<<<<<<` show the start of the conflict, the `>>>>>> ` show the end, and in the middle there is `=======`
+one simply needs to choose which version they want to keep by deleting **all** unwanted text, in our case I want to just keep this:
 ```bash
 my local new much better text
 ```
+[link to example](https://git.mpib-berlin.mpg.de/zika/covid-fear/-/merge_requests/30/conflicts)
+
+- Finally, simply commit the version you are happy with 
+
+```bash
+git commit -m "manually merged a conflict close #34"
+```
+
+*NOTE: __close #34__ will automatically close issue #34, clever.*
 
 ---
 
@@ -299,15 +373,62 @@ git checkout 57e307d4356a01bc6b5d3ed0aed5b678af25ffdc ../docs/documentation/date
 ---
 
 
-#### A few tips
+#### A few tips on collbaration
 
-- be state-aware (always keep in mind *where* you are working and what actions does git perform, most errors will make sense)
-- plain text files over formatted files (`csv` over `xlsx`; `.py` over `.ipynb`, see [example](https://git.mpib-berlin.mpg.de/zika/unc_x2/-/blob/master/pb1/analysis/color_palettes_seaborn.ipynb))
-- mixing manual copying and using git features will "start WW3", at least in your mind
+1. Try to use **recipes** that can be used to re-create results (latex formatting, analysis, software packages, etc)
+
+--
+
+2. Get in the habit of documenting steps and linking them to code - git issues/boards provide a great resource for this (we will hear more from @koch)
+--
+
+3. Avoid large files in git repos, unless you are using `git-annex` or `datalad`.
+
+--
+
+4. Plain text files over formatted files (`csv` over `xlsx`; `.py` over `.ipynb`, see [example](https://git.mpib-berlin.mpg.de/zika/unc_x2/-/blob/master/pb1/analysis/color_palettes_seaborn.ipynb)). 
+
+--
+
+5. Containers looks scary, they are recipes for re-creating the entire environment from operating system up, but in fact they are simple to set up + @krause is very keen to help. 
+
+--
+
+6. Be state aware.
+![](img/pt2_im13.png)
+
+---
+
+#### Tips on how to "convince" collaborators to gitify
+
+--
+
+1. Don't if it creates an obstacle. People have their workflows and likely will not want to change for a collaboration unless they see a clear benefit.  
+
+--
+
+2. Suggest to use git project management features to keep track of progress. 
+
+--
+
+3. Go by example, sometimes when people see the benefits they will ask themselves. 
 
 
 
+---
 
+### What to remember
 
+#### Roles
+- **developers** contribute content
+- **maintainer** manages the merges, asks for improvement
 
-saa
+#### Daily routine
+1. check (that you are in the right place)
+2. pull (get the most recent version of the code from the remote)
+3. branch (branch off, don't work on master/main)
+4. work (work, stage and commit as you go)
+5. push (push to remote)
+6. merge (create a merge request and merge)
+
+#### State awareness above all 
