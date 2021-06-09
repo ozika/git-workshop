@@ -1,7 +1,9 @@
 ---
-title: "Collaboration workflow using git"
-author: "Ondřej Zíka, Christoph Koch, Lennart Wittkuhn"
-date: ""
+title: "Git Workshop"
+subtitle: "Introduction to `git`"
+author: "Christoph Koch, Ondrej Zika, Lennart Wittkuhn"
+institute: "Max Planck Research Group NeuroCode"
+date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
       self_contained: true
