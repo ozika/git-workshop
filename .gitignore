@@ -16,3 +16,8 @@ libs
 *_files
 public
 *.html
+
+.Rproj.user
+.RData
+.Ruserdata
+public
