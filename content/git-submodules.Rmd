@@ -1,6 +1,6 @@
 ---
 title: "Git Workshop"
-subtitle: "Working with Git submodules"
+subtitle: "Repos within repos: Working with Git submodules"
 author: "Christoph Koch, Ondrej Zika, Lennart Wittkuhn"
 institute: "Max Planck Research Group NeuroCode"
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
@@ -54,12 +54,16 @@ opts_chunk$set(
 
 Submodules allow you to keep a Git repository as a subdirectory of another Git repository
 
+--
+
 #### Advantages
 
 - Avoiding redundancy / duplication
 - Allowing reusability
 - Independent commit history
 - Modularity
+
+--
 
 #### Typical situations where submodules can help:
 
@@ -70,13 +74,46 @@ Submodules allow you to keep a Git repository as a subdirectory of another Git r
 
 ---
 
+# Example 1: A modular bibliography.bib file
+
+```{r, echo=FALSE, out.width="80%", fig.cap='<a href="https://github.com/lnnrtwttkhn/bibliography" target="_blank">https://github.com/lnnrtwttkhn/bibliography</a>'}
+knitr::include_graphics("img/git-submodules-bibliography.png")
+```
+
+--
+
+Add the bibliography repo as a Git submodule, then in your LaTeX manuscript:
+```latex
+\bibliography{bibliography/code/bibliography.bib}
+```
+
+---
+
+# Example 2: Reusable code libraries
+
+```{r, echo=FALSE, out.width="60%", fig.cap='<a href="https://git.mpib-berlin.mpg.de/neurocode/neurocode_tools/" target="_blank">https://git.mpib-berlin.mpg.de/neurocode/neurocode_tools/</a>'}
+knitr::include_graphics("img/git-submodules-neurocode-tools.png")
+```
+
+--
+
+```{r, eval=FALSE}
+source('/gdrive/workbench/R/tools/misc/gen_functions.R')
+```
+
+🙂
+
+---
+
 # Git submodules: Adding a submodule
 
-Add an existing Git repository as a submodule
+Add an existing Git repository as a submodule:
 
 ```bash
 $ git submodule add https://git.mpib-berlin.mpg.de/neurocode/neurocode_tools.git
 ```
+
+--
 
 The `neurocode_tools` Git repo will be cloned into the `neurocode_tools` subdirectory:
 
@@ -89,8 +126,10 @@ remote: Total 97 (delta 27), reused 70 (delta 21), pack-reused 0
 Unpacking objects: 100% (97/97), done.
 ```
 
-By default, submodules will add the subproject into a directory named the same as the repository, in this case “neurocode_tools”.
-You can add a different path at the end of the command if you want it to go elsewhere:
+--
+
+By default, submodules will add the subproject into a directory with the same name as the repository, in this case `neurocode_tools`.
+You can add a different path at the end of the command if you want the submodule to be cloned into a different path or directory name:
 
 ```bash
 git submodule add https://git.mpib-berlin.mpg.de/neurocode/neurocode_tools.git \
@@ -115,6 +154,8 @@ Changes to be committed:
 	new file:   neurocode_tools
 ```
 
+--
+
 There are two new files:
 
 1. `.gitmodules`
@@ -126,7 +167,7 @@ Let's check out what those files are!
 
 ## Git submodules: What is in `.gitmodules`?
 
-`.gitmodules` stores the mapping between the submodule's URL and the local subdirectory you've pulled it into.
+`.gitmodules` stores the mapping between the submodule's URL and the local subdirectory you've pulled it into
 
 ```{bash, eval=FALSE}
 $ cat .gitmodules
@@ -135,9 +176,11 @@ $ cat .gitmodules
 	url = https://git.mpib-berlin.mpg.de/neurocode/neurocode_tools
 ```
 
+--
+
 - Multiple submodules will lead to multiple entries in `.gitmodules`
 - Committing `.gitmodules` to your repo is important, so that collaborators know where to get the submodule from
-- Make sure that the URL in `.gitmodules` is accessible by others
+- Make sure that the URL in `.gitmodules` is accessible by others (use `https`)
 - To overwrite the URL use `git config submodule.<submodule_name>.url <new_url>`
 
 ---
@@ -155,15 +198,19 @@ index 0000000..383a616
 +Subproject commit 383a616af6d972313c6cf5e3ab743aecc5fed6cd
 ```
 
-Cryptic!
+Cryptic! 🤨
+
+--
 
 Although `neurocode_tools` is a subdirectory in your repo, Git doesn't track its contents (when you are not in that directory) but sees it as as submodule.
 
-Instead, Git references one particular commit of that repository: `Subproject commit 383a616af6d972313c6cf5e3ab743aecc5fed6cd`.
+Instead, Git **references one particular commit** of the submodule repository:
+
+`Subproject commit 383a616af6d972313c6cf5e3ab743aecc5fed6cd`.
 
 ---
 
-Let's add and commit the submodule (using combined add and commit with `-am`) ...
+Let's add and commit the submodule (using combined `add` and `commit` with `-am`) ...
 
 ```{bash, eval=FALSE}
 {{$ git commit -am "Add neurocode_tools module"}}
@@ -189,17 +236,23 @@ To git.mpib-berlin.mpg.de:neurocode/git-workshop-examples.git
 
 ---
 
+# And now?
+
+#### Now you can just access and use files in the submodule
+
 ```{bash, eval=FALSE}
 {{$ ls}}
 README.md       neurocode_tools
 ```
 
-Now we can `cd` into the `neurocode_tools` submodule and access its files:
+We can `cd` into the `neurocode_tools` submodule and access its files:
 
 ```{bash, eval=FALSE}
 {{$ cd neurocode_tools && ls}}
 README.md  docs       javascript matlab     r
 ```
+
+Cool! 🤩
 
 ---
 
@@ -217,12 +270,16 @@ remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
 Unpacking objects: 100% (6/6), done.
 ```
 
+--
+
 We `cd` into the cloned repo and list its contents using `ls`:
 
 ```{bash, eval=FALSE}
 $ cd git-workshop-examples && ls
 README.md       neurocode_tools
 ```
+
+--
 
 ```{bash, eval=FALSE}
 $ cd neurocode_tools && ls
@@ -233,12 +290,16 @@ It's empty?! 😳 Why?
 
 ---
 
+# Initializing a submodule after cloning
+
 We first need to run `git submodule init` to initialize the local configuration file: 
 
 ```{bash, eval=FALSE}
 $ git submodule init
 Submodule 'neurocode_tools' (https://git.mpib-berlin.mpg.de/neurocode/neurocode_tools) registered for path 'neurocode_tools'
 ```
+
+--
 
 We then run `git submodule update` to fetch all data of the submodule and check out the appropriate commit:
 
@@ -286,12 +347,12 @@ Or foolproof `git submodule update --init --recursive`
 
 # Updating submodules
 
-The basic way of working with submodules is to simply "consume" a subproject, only update the submodule from time to time (i.e., after updating the submodule repo separately), but never changing directly inside the submodule.
+The basic way of working with submodules is to **simply "consume" a subproject**, only update the submodule from time to time (i.e., after updating the submodule repo separately), but never changing directly inside the submodule.
 
 We use `git fetch` and ` git merge origin/master` the upstream branch to update the local code (`cd` into `neurocode_tools` first):
 
 ```{bash, eval=FALSE}
-$ git fetch
+{{$ git fetch}}
 remote: Enumerating objects: 9, done.
 remote: Counting objects: 100% (9/9), done.
 remote: Compressing objects: 100% (5/5), done.
@@ -301,8 +362,10 @@ From https://git.mpib-berlin.mpg.de/neurocode/neurocode_tools
    383a616..005908d  master     -> origin/master
 ```
 
+--
+
 ```{bash, eval=FALSE}
-$ git merge origin/master
+{{$ git merge origin/master}}
 Updating 383a616..005908d
 Fast-forward
  docs/_sidebar.md         | 1 +
@@ -321,6 +384,8 @@ Submodule neurocode_tools 383a616..005908d:
   > Add docs for extract_numbers.R
 ```
 
+--
+
 > "The lazy version, please!"
 
 If you don't to manually fetch and merge in the subdirectory, you can do:
@@ -336,7 +401,7 @@ Don't forget to commit the update of the submodule!
 
 ---
 
-# Pulling changes of repos with submodules
+# Pulling changes with submodules
 
 Most of the time, you use `git pull` to update changes in your repo.
 
@@ -358,6 +423,8 @@ Fast-forward
 `git pull` recursively fetches changes in submodules.
 *But* it does not **update** them!
 
+(i.e., it does not update the actual files to the newly pulled version)
+
 ---
 
 `git status` shows that the submodule is modified and has "new commits":
@@ -375,6 +442,8 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
+
+--
 
 To finalize the update, you need to run `git submodule update`:
 
