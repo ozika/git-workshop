@@ -7,7 +7,8 @@
 
 # Exclude R junk
 .R*
-
-# Exclude rendered .html files
-/content/*.html
-
+libs
+*_cache
+*_files
+public
+*.html
