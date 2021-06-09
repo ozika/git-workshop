@@ -57,6 +57,63 @@ render_xaringan = function(name, path_rmd){
 
 # Agenda
 
+## 01 Introduction to Git
+
+```{r, echo=FALSE, results="hide", message=FALSE, warning=FALSE}
+path_html = render_xaringan(
+  name = "01_introduction_to_git",
+  path_rmd = here::here("content", "01_introduction_to_git.Rmd")
+  )
+```
+
+- Presenter: Christoph Koch
+```{r, echo=FALSE, results="asis"}
+cat(paste0('- <a href="', path_html, '" target="_blank">Download slides</a>'))
+```
+- [Source code on GitLab](https://git.mpib-berlin.mpg.de/neurocode/git-workshop/-/blob/master/content/01_introduction_to_git.Rmd )
+
+```{r, echo=FALSE}
+knitr::include_url(path_html)
+```
+
+## 02a Collaboration using Git
+
+```{r, echo=FALSE, results="hide", message=FALSE, warning=FALSE}
+path_html = render_xaringan(
+  name = "02_collaboration_using_git",
+  path_rmd = here::here("content", "02_collaboration_using_git.Rmd")
+  )
+```
+
+- Presenter: Ondrej Zika
+```{r, echo=FALSE, results="asis"}
+cat(paste0('- <a href="', path_html, '" target="_blank">Download slides</a>'))
+```
+- [Source code on GitLab](https://git.mpib-berlin.mpg.de/neurocode/git-workshop/-/blob/master/content/02_collaboration_using_git.Rmd)
+
+```{r, echo=FALSE}
+knitr::include_url(path_html)
+```
+
+## 02b Project Managament with Git
+
+```{r, echo=FALSE, results="hide", message=FALSE, warning=FALSE}
+path_html = render_xaringan(
+  name = "02b_project_management.Rmd",
+  path_rmd = here::here("content", "02b_project_management.Rmd")
+  )
+```
+
+- Presenter: Christoph Koch
+```{r, echo=FALSE, results="asis"}
+cat(paste0('- <a href="', path_html, '" target="_blank">Download slides</a>'))
+```
+- [Source code on GitLab](https://git.mpib-berlin.mpg.de/neurocode/git-workshop/-/blob/master/content/02b_project_management.Rmd)
+
+```{r, echo=FALSE}
+knitr::include_url(path_html)
+```
+
 ## 03 Git Submodules
 
 ```{r, echo=FALSE, results="hide", message=FALSE, warning=FALSE}

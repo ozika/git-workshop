@@ -10,4 +10,4 @@ pages:
       - public
   only:
     # note that this should be replaced with master once all the different documents are merged:
-    - git-advanced
+    - master
