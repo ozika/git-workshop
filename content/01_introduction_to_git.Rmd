@@ -1,9 +1,9 @@
 ---
-title: "Introduction to `git`"
-subtitle: "Introduction"
-author: "Lennart Wittkuhn, Ondrej Zika, Christoph Koch"
+title: "Git Workshop"
+subtitle: "Introduction to `git`"
+author: "Christoph Koch, Ondrej Zika, Lennart Wittkuhn"
 institute: "Max Planck Research Group NeuroCode"
-date: "2016/12/12 (updated: `r Sys.Date()`)"
+date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output:
   xaringan::moon_reader:
     self_contained: true
@@ -14,10 +14,31 @@ output:
       highlightLines: true
       countIncrementalSlides: false
 ---
+
+### Content
+
+**Introduction to `git`**
+
+**`git`: The basics**
+- `1.` Interacting with `git`
+- `2.` Creating a `git` repository
+- `3.` Keeping track of files: Staging & committing
+
+**`git`: The not-so-much basics**
+- `4.` The `.gitignore`
+- `5.` Branching
+- `6.` Merging
+- `7.` Connecting a remote and a local repository
+- `8.` Pushing and pulling
+
+---
+
 class: middle
 
 
 ## Introduction to `git`
+
+
 
 ---
 class: center, middle
@@ -245,11 +266,21 @@ class: center, middle
 ---
 class: middle
 
-## `git`: The basics 
+## `git`: The basics
 
 ---
 
-### Interacting with `git`
+### Content
+
+`1.` Interacting with `git`
+
+`2.` Creating a `git` repository
+
+`3.` Keeping track of files: Staging & committing
+
+---
+
+### `1.` Interacting with `git`
 
 `git` can be interacted with in different ways:
 
@@ -261,7 +292,7 @@ class: middle
 
 ---
 
-### Interacting with `git`
+### `1.` Interacting with `git`
 
 `git` can be interacted with in different ways:
 
@@ -297,7 +328,7 @@ usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
 
 ---
 
-### Interacting with `git`
+### `1.` Interacting with `git`
 
 `git` can be interacted with in different ways:
 
@@ -336,7 +367,7 @@ usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
 ---
 
 
-### Creating a `git` repository
+### `2.` Creating a `git` repository
 
 > Program that keeps track of a folder structure
 
@@ -364,7 +395,7 @@ Initialized empty Git repository in /Users/koch/git_workshop/.git/
 
 ---
 
-### `git` keeping track
+### `3.` `git` keeping track
 
 **Let's create a file and see if `git` really notices**
 
@@ -396,7 +427,7 @@ It lists our newly created file `README.md` as an **untracked file**!
 
 ---
 
-### `git` keeping track
+### `3.` `git` keeping track
 
 - `git` **does not blindly just keep track** of everything in the folder
 - Helpful because it prevents us from tracking files that are...
@@ -428,7 +459,7 @@ Changes to be committed:
 
 ---
 
-### Staging and commiting
+### `3.` Staging and commiting
 
 .left-column[
 .center[
@@ -452,7 +483,7 @@ Committed
 
 ---
 
-### Staging and commiting
+### `3.` Staging and commiting
 
 .left-column[
 .center[
@@ -480,7 +511,7 @@ Files that were changed but have not yet been added
 
 ---
 
-### Staging and commiting
+### `3.` Staging and commiting
 
 .left-column[
 .center[
@@ -516,7 +547,7 @@ git add .
 
 ---
 
-### Staging and commiting
+### `3.` Staging and commiting
 
 .left-column[
 .center[
@@ -550,7 +581,7 @@ Files that will be tracked as soon as we "commit" to it
 
 ---
 
-### Staging and commiting
+### `3.` Staging and commiting
 
 .left-column[
 .center[
@@ -592,7 +623,7 @@ git commit -m 'My commit message'
 
 ---
 
-### Staging and commiting
+### `3.` Staging and commiting
 
 .left-column[
 .center[
@@ -630,7 +661,7 @@ git commit -m 'Added README.md'
 
 ---
 
-### Staging and commiting
+### `3.` Staging and commiting
 
 .left-column[
 .center[
@@ -828,7 +859,21 @@ class: middle
 
 ---
 
-### The `.gitignore`
+### Content
+
+`4.` The `.gitignore`
+
+`5.` Branching
+
+`6.` Merging
+
+`7.` Connecting a remote and a local repository
+
+`8.` Pushing and pulling
+
+---
+
+### `4.` The `.gitignore`
 
 .center[
 Some files are **annoying** if they are tracked:
@@ -925,7 +970,7 @@ class: middle
 
 ---
 
-### Branching
+### `5.` Branching
 
 Sometimes you are about to introduce some big changes which might cause some problems!
 
@@ -1011,7 +1056,7 @@ git commit -m 'Edit README.md'
 
 ---
 
-### Merging
+### `6.` Merging
 
 If our big changes are all okay and don't produce problems we might want to **keep them around in our main project!**
 
@@ -1046,7 +1091,7 @@ Fast-forward
 
 ---
 
-### Merging
+### `6.` Merging
 
 .center[
 <img src="img/01_introduction_to_git_16.png" alt="cloud" style="width:500px">
@@ -1066,7 +1111,7 @@ Deleted branch test_branch (was d60031a).
 
 ---
 
-### Connecting a remote and a local repository
+### `7.` Connecting a remote and a local repository
 
 Let's say you want to create a new research project and keep track of it using `git`!
 
@@ -1090,7 +1135,7 @@ Here we can **create a blank project**:
 
 ---
 
-### Cloning
+#### Cloning
 
 For now this repository **only exists on the `remote` (GitLab)**
 
@@ -1113,7 +1158,7 @@ To put a copy of the repository on your own machine you can use **`git clone`**
 
 ---
 
-### Cloning
+#### Cloning
 
 **`2.` Create a clone of the repository on your own machine**
 
@@ -1142,7 +1187,7 @@ Unpacking objects: 100% (3/3), done.
 
 ---
 
-### Pushing and pulling
+### `8.` Pushing and pulling
 
 Now you can work locally on the repository! However, there is one problem:
 

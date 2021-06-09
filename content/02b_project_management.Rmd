@@ -1,8 +1,9 @@
 ---
-title: "**Intermezzo:** Project management with `git`"
-author: "Lennart Wittkuhn, Christoph Koch, Ondrej Zika"
+title: "Git Workshop"
+subtitle: "**Intermezzo:** Project management with `git`"
+author: "Christoph Koch, Ondrej Zika, Lennart Wittkuhn"
 institute: "Max Planck Research Group NeuroCode"
-date: "2016/12/12 (updated: `r Sys.Date()`)"
+date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output:
   xaringan::moon_reader:
     self_contained: true
