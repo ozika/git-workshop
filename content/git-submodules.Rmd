@@ -41,12 +41,6 @@ opts_chunk$set(
   )
 ```
 
-# Table of contents
-
-1. [Submodules](#submodules)
-
----
-
 # Submodules
 
 
@@ -102,6 +96,15 @@ source('/gdrive/workbench/R/tools/misc/gen_functions.R')
 ```
 
 🙂
+
+---
+
+# Example 3: DataLad
+
+```{r, echo=FALSE, out.width="60%", fig.cap='<a href="https://git.mpib-berlin.mpg.de/wittkuhn/zoo/" target="_blank">https://git.mpib-berlin.mpg.de/wittkuhn/zoo/</a>'}
+knitr::include_graphics("img/03_git_submodules_zoo_repo.png")
+```
+
 
 ---
 
@@ -467,7 +470,7 @@ nothing to commit, working tree clean
 
 ---
 
-# Submodules: Further reading
+# Further reading & summary
 
 What we did *not* cover here:
 
@@ -478,6 +481,11 @@ What we did *not* cover here:
 For details see the [Git documentation on submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
 
 *Sidenote:* [DataLad](https://www.datalad.org/) uses Git submodules under the hood to allow hierarchical [nesting of datasets](https://handbook.datalad.org/en/latest/basics/101-106-nesting.html).
-This allows establishing [data lineage / provenance](https://en.wikipedia.org/wiki/Data_lineage), i.e., unambigously identifying which version of a dataset served as the input to another downstream analysis.
+This allows establishing [data lineage / provenance](https://en.wikipedia.org/wiki/Data_lineage), i.e., unambiguously identifying which version of a dataset served as the input to another downstream analysis.
 
+--
 
+### Summary
+
+- When you keep reusing code across projects, consider to modularize it in a submodule
+- Not everyone likes *sob*modules, e.g., ["Why your company shouldn't use Git submodules"](https://codingkilledthecat.wordpress.com/2012/04/28/why-your-company-shouldnt-use-git-submodules/)
