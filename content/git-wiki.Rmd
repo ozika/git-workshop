@@ -55,6 +55,8 @@ knitr::include_graphics("img/03-git-advanced-wiki-gitlab.png")
 
 ---
 
+# How do I get the wiki contents?
+
 ### Clone the wiki
 
 Use `git clone` to clone the wiki repo to your system:
@@ -105,7 +107,7 @@ $ tree -L 1
 
 ---
 
-see the [usage guide](https://neurocode.mpib.berlin/wiki/admin/usage/)
+See the [usage guide](https://neurocode.mpib.berlin/wiki/admin/usage/) on how to interact with the wiki
 
 ```{bash, eval=FALSE}
 $ cd docs && ls && cat index.md
@@ -125,6 +127,8 @@ Check our [onboarding guide](admin/onboarding.md) to set up everything you need 
 
 Check our [guide on how to use the wiki](admin/how-to-use-the-wiki)
 ```
+
+--
 
 This 👆 is [Markdown syntax](https://www.markdownguide.org/basic-syntax/) (and a tiny bit of HTML to include an image)
 - You (can) use Markdown syntax in Mattermost posts (see [here](https://docs.mattermost.com/help/messaging/formatting-text.html))
@@ -173,6 +177,8 @@ index 26015bb..4715b12 100755
 +Welcome to the best lab 4 ever!
 +
 ```
+
+--
 
 ```{bash, eval=FALSE}
 $ git status
@@ -234,9 +240,13 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
+--
+
 > "Ok, got it, `git add`, `git commit`, `git push`, right?"
 
-**Halt!** 👮🚔🚨
+--
+
+**Halt! Stop!** 👮🚔🚨🥔
 
 Remember the `mkdocs` documentation:
 
@@ -249,6 +259,8 @@ Remember the `mkdocs` documentation:
 > Project settings are always configured by using a YAML configuration file in the project directory named `mkdocs.yml`.
 > As a minimum this configuration file must contain the `site_name` setting.
 > All other settings are optional.
+
+--
 
 ```{console, eval=FALSE}
 $ sed -n 1,6p mkdocs.yml
@@ -277,6 +289,8 @@ INFO    -  The following pages exist in the docs directory,
 but are not included in the "nav" configuration:
   - admin/new_page.md
 ```
+
+--
 
 To add the new `new_page.md` to the wiki, we need to edit the `nav`:
 
@@ -358,7 +372,9 @@ $ mkdocs serve
 
 > "Yeah, I know, just do `pip install mkdocs`!"
 
-**Achtung!** 👮🚔🚨
+**Achtung!** 👮🚔🚨🥔
+
+Mind the dependencies!
 
 ---
 
@@ -407,7 +423,9 @@ The rendered website will update automatically as you make changes! 😲
 
 ---
 
-# How is the website updated?
+# How is the website on GitLab updated?
+
+--
 
 <iframe src="https://giphy.com/embed/12NUbkX6p4xOO4" width="480" height="440" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/shia-labeouf-12NUbkX6p4xOO4">via GIPHY</a></p>
 
@@ -451,13 +469,9 @@ pages: # gitlab pages allows to publish static websites
 
 ---
 
-# The end
+# The end 💕
 
-```{r, echo=FALSE, out.width="65%", fig.cap="<sup>Screenshot of the MPRG NeuroCode wiki (taken 2021-06-08)</sup>"}
+```{r, echo=FALSE, out.width="90%", fig.cap="<sup>Screenshot of the MPRG NeuroCode wiki (taken 2021-06-08)</sup>"}
 knitr::include_graphics("img/git-wiki-screenshot-website.png")
 ```
-
-
-
-
 
