@@ -369,14 +369,14 @@ usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
 
 ### `2.` Creating a `git` repository
 
-> Program that keeps track of a folder structure
+> Git is a program that keeps track of a folder structure
 
 ***
 
 **Let's tell git to do exactly that!**
 
 - Create new `git_workshop` folder in our home directory
-- Tell `git` to keep track of it
+- Tell `git` to keep track of its changes
 
 ```bash
 cd ~
@@ -392,70 +392,6 @@ Initialized empty Git repository in /Users/koch/git_workshop/.git/
 .center[
 <img src="img/01_introduction_to_git_13.png" alt="cloud" style="width:800px">
 ]
-
----
-
-### `3.` `git` keeping track
-
-**Let's create a file and see if `git` really notices**
-
-```bash
-touch README.md
-```
-
---
-
-We can regularly check what `git` thinks by using the `git status` command
-
-```bash
-git status
-```
-
-```bash
-On branch master
-
-No commits yet
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-*	README.md
-
-nothing added to commit but untracked files present (use "git add" to track)
-```
-
-It lists our newly created file `README.md` as an **untracked file**!
-
----
-
-### `3.` `git` keeping track
-
-- `git` **does not blindly just keep track** of everything in the folder
-- Helpful because it prevents us from tracking files that are...
-     - ...too large
-     - ...not interesting
-
-***
-
---
-
-**How do I tell `git` to keep track of a file?**
-- Use the `git add` command to add the file to be tracked
-- Check if `git` now keeps track with the `git status` command
-
-```bash
-git add README.md
-git status
-```
-
-```bash
-On branch master
-
-No commits yet
-
-Changes to be committed:
-  (use "git rm --cached <file>..." to unstage)
-*	new file:   README.md
-```
 
 ---
 
@@ -502,48 +438,14 @@ Committed
 ]
 
 .right-column[
-Files that were changed but have not yet been added
+
+- Changes in the repository that git noticed
 
 .center[
 <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Scattered_white_paper_%28Unsplash%29.jpg" alt="scattered notes" style="width:300px">
 ]
 ]
 
----
-
-### `3.` Staging and commiting
-
-.left-column[
-.center[
-.pull-left[
-Untracked
-
-**|**
-
-Staged
-
-|
-
-Committed
-]
-]
-]
-
-.right-column[
-**From untracked to staged:**
-
-```bash
-git add <YOUR FILE>
-```
-
-```bash
-git add -A
-```
-
-```bash
-git add .
-```
-]
 
 ---
 
@@ -567,11 +469,8 @@ Committed
 
 .right-column[
 
-"Preperation layer"
-
-Files that will be tracked as soon as we "commit" to it
-
-
+- "Preperation layer"
+- Select changes that you think are important
 
 .center[
 <img src="https://live.staticflickr.com/7409/13906283419_cb24a07cfa_b.jpg" alt="sorted notes" style="width:500px">
@@ -579,47 +478,6 @@ Files that will be tracked as soon as we "commit" to it
 
 ]
 
----
-
-### `3.` Staging and commiting
-
-.left-column[
-.center[
-.pull-left[
-Untracked
-
-|
-
-Staged
-
-**|**
-
-Committed
-]
-]
-]
-
-.right-column[
-
-**From staged to committed:**
-
-```bash
-git commit
-```
-
-```bash
-git commit -m 'My commit message'
-```
-
-- This will commit to all prepared changes/things to keep track of
-- It also adds a tiny message (written by you) what was done
-
-***
-
-**Rule:** Make commits topic-consistent and easy to digest so it's easier to know what was done
-
-
-]
 
 ---
 
@@ -643,44 +501,88 @@ Staged
 
 .right-column[
 
-
-```bash
-git commit -m 'Added README.md'
-```
-
-```bash
-[master (root-commit) 214c62b] Added README.md
- 1 file changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 README.md
-```
+- **Commit** to these changes and save them in the history
+- Create a "time stamp" of the project with these changes
 
 .center[
-<img src="https://live.staticflickr.com/3784/9563423274_743986bd15_b.jpg" alt="file cabinet" style="width:200px">
+<img src="https://live.staticflickr.com/3784/9563423274_743986bd15_b.jpg" alt="file cabinet" style="width:250px">
 ]
 ]
+
 
 ---
 
-### `3.` Staging and commiting
+### `3.` `git` keeping track
 
-.left-column[
-.center[
-.pull-left[
-Untracked
+**Let's create a file and see if `git` really notices**
 
-|
+```bash
+touch README.md
+```
 
-Staged
+--
 
-|
+We can regularly check what `git` thinks by using the `git status` command
 
-**Committed**
-]
-]
-]
+```bash
+git status
+```
 
-.right-column[
+```bash
+On branch master
 
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+*	README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+It lists our newly created file `README.md` as an **untracked file**!
+
+---
+
+### `3.` `git` keeping track
+
+- `git` **does not blindly just keep track** of everything in the folder
+- Helpful because it prevents us from tracking files that are...
+     - ...too large
+     - ...not interesting
+
+***
+
+--
+
+**How do I tell `git` that this change is important to me?**
+- Use the `git add` command to add the file to the **staging area**
+- Check if `git` now knows about the file (`git status`)
+
+```bash
+git add README.md
+git status
+```
+
+```bash
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+*	new file:   README.md
+```
+
+---
+
+### `3.` `git` keeping track
+
+- Checked if all changes in the staging area should be tracked?
+- Sure?
+
+**Then let's commit to it!**
+- This will create a "time stamp" to which you will be able to go back
 
 ```bash
 git commit -m 'Added README.md'
@@ -692,8 +594,11 @@ git commit -m 'Added README.md'
  create mode 100644 README.md
 ```
 
+--
+
 ***
 
+.center[
 **Congrats!**
 
 You created your first commit!
@@ -749,7 +654,7 @@ On branch master
 **No! Let's stage our changes...**
 
 ```bash
-git add -A
+git add README.md
 git status
 ```
 
@@ -882,6 +787,10 @@ Some files are **annoying** if they are tracked:
 - Files that can't be changed without changing the complete file (e.g. `.pdf`, images, ...)
 - **`.DS_Store`**: God damn you, `.DS_Store`!
 
+--
+
+***
+
 .center[
 Some files are **pointless** to track:
 ]
@@ -902,6 +811,32 @@ touch .gitignore
 echo "*.pdf" >> .gitignore
 echo "*DS_Store" >> .gitignore
 ```
+
+---
+
+class: middle
+
+**An example for a `.gitignore`**
+
+```bash
+ # Exclude MacOS junk
+ .DS_Store
+ ._.DS_Store
+
+ # Exclude temporary files
+ *._*
+ *._anon*
+
+ # Exclude .html files
+ *.html
+
+ # Exclude data directories from tracking
+ bids/
+ sourcedata/
+```
+
+-  use a `*` as wildcard (placeholder for any text)
+- `bids/` will ignore the complete directory called `bids`
 
 ---
 
@@ -940,33 +875,8 @@ Note how the `.DS_Store` file we created **does not show up as an untracked file
 
 ```bash
 git add -A
-gti commit -m 'Added .gitignore'
+gii commit -m 'Added .gitignore'
 ```
-
----
-class: middle
-
-**An example for a `.gitignore`**
-
-```bash
- # Exclude MacOS junk
- .DS_Store
- ._.DS_Store
-
- # Exclude temporary files
- *._*
- *._anon*
-
- # Exclude .html files
- *.html
-
- # Exclude data directories from tracking
- bids/
- sourcedata/
-```
-
--  use a `*` as wildcard (placeholder for any text)
-- `bids/` will ignore the complete directory called `bids`
 
 ---
 
