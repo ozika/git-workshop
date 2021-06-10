@@ -18,9 +18,12 @@ output:
 fig.align: "center"
 ---
 
-## Overview
+# Overview
+
+Welcome! 👋
 
 - [Repo](https://git.mpib-berlin.mpg.de/neurocode/git-workshop/)
+- [Post-workshop survey](https://forms.gle/UVSUKHs1hXLdXodC7) for feedback
 
 ```{r, echo=FALSE, message=FALSE}
 # allow duplicate labels: https://bookdown.org/yihui/rmarkdown-cookbook/duplicate-label.html
