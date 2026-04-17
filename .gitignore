@@ -21,3 +21,5 @@ public
 .RData
 .Ruserdata
 public
+/.quarto/
+**/*.quarto_ipynb

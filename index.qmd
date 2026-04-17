@@ -1,0 +1,56 @@
+---
+title: "Git Workshop"
+author: "Christoph Koch, Ondrej Zika, Lennart Wittkuhn"
+affiliation: "Max Planck Research Group NeuroCode"
+date: today
+date-format: "DD MMMM, YYYY"
+---
+
+# Overview
+
+Welcome! 👋
+
+- [Repo](https://git.mpib-berlin.mpg.de/neurocode/git-workshop/)
+- [Post-workshop survey](https://forms.gle/UVSUKHs1hXLdXodC7) for feedback
+
+# Agenda
+
+## 01 Introduction to Git
+
+- Presenter: Christoph Koch
+- [Download slides](content/01_introduction_to_git.html){target="_blank"}
+- [Source code on GitLab](https://git.mpib-berlin.mpg.de/neurocode/git-workshop/-/blob/master/content/01_introduction_to_git.Rmd)
+
+<iframe src="content/01_introduction_to_git.html" width="100%" height="500px" style="border: none;"></iframe>
+
+## 02a Collaboration using Git
+
+- Presenter: Ondrej Zika
+- [Download slides](content/02_collaboration_using_git.html){target="_blank"}
+- [Source code on GitLab](https://git.mpib-berlin.mpg.de/neurocode/git-workshop/-/blob/master/content/02_collaboration_using_git.Rmd)
+
+<iframe src="content/02_collaboration_using_git.html" width="100%" height="500px" style="border: none;"></iframe>
+
+## 02b Project Management with Git
+
+- Presenter: Christoph Koch
+- [Download slides](content/02b_project_management.html){target="_blank"}
+- [Source code on GitLab](https://git.mpib-berlin.mpg.de/neurocode/git-workshop/-/blob/master/content/02b_project_management.Rmd)
+
+<iframe src="content/02b_project_management.html" width="100%" height="500px" style="border: none;"></iframe>
+
+## 03 Git Submodules
+
+- Presenter: Lennart Wittkuhn
+- [Download slides](content/git-submodules.html){target="_blank"}
+- [Source code on GitLab](https://git.mpib-berlin.mpg.de/neurocode/git-workshop/-/blob/master/content/git-submodules.Rmd)
+
+<iframe src="content/git-submodules.html" width="100%" height="500px" style="border: none;"></iframe>
+
+## 04 Working with the Wiki using Git
+
+- Presenter: Lennart Wittkuhn
+- [Download slides](content/git-wiki.html){target="_blank"}
+- [Source code on GitLab](https://git.mpib-berlin.mpg.de/neurocode/git-workshop/-/blob/master/content/git-wiki.Rmd)
+
+<iframe src="content/git-wiki.html" width="100%" height="500px" style="border: none;"></iframe>

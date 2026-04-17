@@ -1,0 +1,22 @@
+project:
+  type: website
+  render:
+    - "*.qmd"
+    - "content/*.qmd"
+
+website:
+  title: "Git Workshop"
+  site-url: https://ozika.github.io/git-workshop
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+
+format:
+  html:
+    theme: darkly
+    toc: true
+    toc-depth: 3
+    number-sections: false
+    highlight-style: pygments
+    code-fold: true
