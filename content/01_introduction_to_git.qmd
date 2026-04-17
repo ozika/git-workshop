@@ -455,9 +455,7 @@ Committed
 
 - Changes in the repository that git noticed
 
-::: {style="text-align: center"}
-<img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Scattered_white_paper_%28Unsplash%29.jpg" alt="scattered notes" style="width:300px">
-:::
+> *Like scattered, unsorted notes on a desk*
 :::
 ::::
 
@@ -485,9 +483,7 @@ Committed
 - "Preperation layer"
 - Select changes that you think are important
 
-::: {style="text-align: center"}
-<img src="https://live.staticflickr.com/7409/13906283419_cb24a07cfa_b.jpg" alt="sorted notes" style="width:500px">
-:::
+> *Like sorted, selected notes ready to file*
 
 :::
 ::::
@@ -516,9 +512,7 @@ Staged
 - **Commit** to these changes and save them in the history
 - Create a "time stamp" of the project with these changes
 
-::: {style="text-align: center"}
-<img src="https://live.staticflickr.com/3784/9563423274_743986bd15_b.jpg" alt="file cabinet" style="width:250px">
-:::
+> *Like filing documents permanently in a cabinet*
 :::
 ::::
 

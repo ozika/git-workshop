@@ -13,14 +13,6 @@ format:
     slide-number: true
 ---
 
-```{css, echo=FALSE}
-@media print {
-  .has-continuation {
-    display: block !important;
-  }
-}
-```
-
 # The MPRG NeuroCode wiki
 
 The wiki is available^1^ at https://git.mpib-berlin.mpg.de/neurocode/wiki

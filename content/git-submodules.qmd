@@ -13,14 +13,6 @@ format:
     slide-number: true
 ---
 
-```{css, echo=FALSE}
-@media print {
-  .has-continuation {
-    display: block !important;
-  }
-}
-```
-
 # Submodules
 
 
