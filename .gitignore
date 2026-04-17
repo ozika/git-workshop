@@ -22,4 +22,5 @@ public
 .Ruserdata
 public
 /.quarto/
+/_site/
 **/*.quarto_ipynb
